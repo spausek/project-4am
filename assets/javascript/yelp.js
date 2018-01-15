@@ -15,4 +15,5 @@ function newYelpQuery(){
 
 	}
 
+	return YelpQuery;
 }
