@@ -1,7 +1,7 @@
 function queryProxy(requestURL, apiKey){
 
 	const proxy = 'https://proxy.bhsplex.com/';
-	let Response = undefined;
+	let response = undefined;
 
 	$.ajax({
         method: 'GET',
@@ -15,8 +15,8 @@ function queryProxy(requestURL, apiKey){
     .done(function(data) {
 
         console.log(data)
-        Response = data;
+        response = data;
     })
 
-   return Response;
+   return response;
 }
