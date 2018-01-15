@@ -16,10 +16,3 @@ function newYelpQuery(){
 	}
 
 }
-
-
-
-$(document).ready(function(){
-
-
-});
