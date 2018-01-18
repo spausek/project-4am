@@ -16,6 +16,8 @@
   	event.preventDefault();
   	var msgUser = $('#username').val().trim();
   	var msgText = $('#text').val().trim();
+    // time stamp
+    var time = moment().format('LT');  
   	console.log(msgUser);
   	console.log(msgText);
 
@@ -30,7 +32,8 @@
 
   	var messagesData = {
   		user: msgUser,
-  		text: msgText
+  		text: msgText,
+      time: time
   	};
 
   	//push object to firebase
@@ -48,8 +51,9 @@
 
   	var msgUser = childSnapshot.val().user;
   	var msgText = childSnapshot.val().text;
+    var time = childSnapshot.var().time;
 
-  	$('#message-display').append('<p>' + msgUser + ': ' + msgText +'</p>');
+  	$('#message-display').append('<p>' + msgUser + ': ' + msgText + ' ' + time + '</p>');
 
 
 
