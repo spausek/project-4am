@@ -5,6 +5,17 @@ body {
   a img{
     border: 0px;
   }
+
+  #view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+  }
+
   
   ::-moz-selection {
     background-color: black;
@@ -103,13 +114,9 @@ body {
   
       .web-navigation .mdl-navigation__link:hover {
         border-bottom: 4px solid #757575;
+        text-decoration:  none;
       }
-  
-    .web-search-box {
-      -webkit-order: 2;
-          -ms-flex-order: 2;
-              order: 2;
-    }
+
   
     .web-more-button {
       -webkit-order: 3;
@@ -186,6 +193,7 @@ body {
     border: 0;
     box-shadow: none;
     border-left: solid 1px #ccc;
+    text-decoration:  none;
 }
 
 #custom-search-input .glyphicon-search{
@@ -350,6 +358,7 @@ body {
   
     .web-link:hover {
       color: black !important;
+      text-decoration:  none;
     }
   
     .web-link .material-icons {
@@ -366,6 +375,7 @@ body {
   
     .web-alt-link:hover {
       color: #00bfa5 !important;
+      text-decoration:  none;
     }
   
     .web-alt-link .material-icons {
@@ -444,6 +454,7 @@ body {
   
     .web-footer a:hover {
       color: #757575;
+      text-decoration:  none;
     }
   
     .web-footer .mdl-mega-footer--top-section::after {
@@ -470,6 +481,13 @@ body {
   
   .web-link-menu:hover {
     cursor: pointer;
+    text-decoration:  none;
+  }
+
+  .mdl-chat-click:hover {
+    text-decoration:  none;
+    color: black !important;
+
   }
   
   
