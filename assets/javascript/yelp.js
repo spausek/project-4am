@@ -25,16 +25,22 @@ function newYelpQuery(){
 		currentOffset : 0,
 		totalResults: 0,
 		params : {
-			location : undefined,
+			address : undefined,
+			latitude: undefined,
+			longitude: undefined,
 			term : "&categories=bars,restaurants",
 			radius : undefined,
 			offset: "&offset=0", //on forwardclick, offset += limit. On backclic, offset -= limit
 			limit: "&limit=25", //25 per page/search
 		},
 		 
-		setLocation : function(location){
+		setLocationAddress : function(venue){
 			this.params.location = "&location=" + location;
 		},
+		setLocationCoords : function(venue){
+			this.params.latitude = "&latitude=" + venue.latitude;
+			this.params.longitude = "&longitude=" + venue.longitude;
+		}
 		setRadius : function(miles){
 			this.params.radius = "&radius=" + milesToMeters(miles);
 		},
