@@ -98,7 +98,7 @@ body {
       height: 60px;
       line-height: 68px;
       background-color: transparent !important;
-      border-bottom: 4px solid transparent;
+      border-bottom: 50px solid transparent;
     }
   
       .web-navigation .mdl-navigation__link:hover {
@@ -109,8 +109,6 @@ body {
       -webkit-order: 2;
           -ms-flex-order: 2;
               order: 2;
-      margin-left: 16px;
-      margin-right: 16px;
     }
   
     .web-more-button {
@@ -317,13 +315,13 @@ body {
     }
   
   
-  /* .web-wear-section {
+  .web-wear-section {
     position: relative;
     background-size: cover;
     background: url('images/bar.png') center top no-repeat;
     background-size: cover;
     height: 800px;
-  } */
+  }
   
   .web-wear-band {
     position: absolute;
@@ -389,19 +387,13 @@ body {
     .web-customized-section-text p {
       padding-top: 16px;
     }
-  
-  /* .web-customized-section-image {
-    background: url('images/devices.jpg') center top no-repeat;
-    background-size: cover;
-    height: 400px;
-  } */
-  
-  /* .web-more-section {
+    
+  .web-more-section {
     padding: 80px 0;
     max-width: 1044px;
     margin-left: auto;
     margin-right: auto;
-  } */
+  }
   
     .web-more-section .web-section-title {
       margin-left: 12px;
