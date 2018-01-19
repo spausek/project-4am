@@ -155,10 +155,20 @@ body {
     height: 800px;
     width: auto;
     background-color: #f3f3f3;
-    background: url('/Users/haigbedros/dev/4am-project/assets/images/bar.jpg') center 30% no-repeat;
+    background: url("https://raw.githubusercontent.com/spausek/project-4am/56374d647a7280ce027f46764cd10713db7207a9/assets/images/bar.jpg") center 30% no-repeat;
     background-size: cover;
   }
   
+  /* .web-be-together-section {
+    position: relative;
+    height: 800px;
+    width: auto;
+    background-color: #f3f3f3;
+    background: url("/Users/haigbedros/dev/project-4am/assets/images/bar.jpg") center 30% no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+  } */
+
   .logo-font {
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     line-height: 1;
@@ -280,12 +290,13 @@ body {
     }
   
   
-  .web-wear-section {
+  /* .web-wear-section {
     position: relative;
-    background: url('images/wear.png') center top no-repeat;
+    background-size: cover;
+    background: url('images/bar.png') center top no-repeat;
     background-size: cover;
     height: 800px;
-  }
+  } */
   
   .web-wear-band {
     position: absolute;
@@ -352,18 +363,18 @@ body {
       padding-top: 16px;
     }
   
-  .web-customized-section-image {
+  /* .web-customized-section-image {
     background: url('images/devices.jpg') center top no-repeat;
     background-size: cover;
     height: 400px;
-  }
+  } */
   
-  .web-more-section {
+  /* .web-more-section {
     padding: 80px 0;
     max-width: 1044px;
     margin-left: auto;
     margin-right: auto;
-  }
+  } */
   
     .web-more-section .web-section-title {
       margin-left: 12px;
