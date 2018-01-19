@@ -1,6 +1,5 @@
 function createBusiness(jsonBusiness){
 
-
 	const Business = {
 		name: jsonBusiness.name,
 		phone: jsonBusiness.phone,
@@ -15,7 +14,6 @@ function createBusiness(jsonBusiness){
 
 	return Business;
 }
-
 
 function newYelpQuery(){
 
@@ -56,16 +54,12 @@ function newYelpQuery(){
 			return queryURL;
 		},
 		queryBusinesses(YelpQuery){
-
-
 		    const proxy = 'https://proxy.bhsplex.com/';
 		    let response = undefined;
 
 		    $.ajax({
 		        method: 'GET',
-		        // we simply append the yelp url to the proxy url
 		        url: proxy + YelpQuery.createQueryURL(),
-		        // doesn't matter if there's no key for bandsintown, it will just be null
 		        headers: {
 		            Authorization: 'Bearer ' + YelpQuery.key
 		        }
@@ -75,7 +69,6 @@ function newYelpQuery(){
 		        YelpQuery.parseLocationData(data);
 		        console.log(YelpQuery.businesses);
 		    });
-
 		}
 	}
 	
