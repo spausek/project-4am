@@ -1,0 +1,524 @@
+body {
+    margin: 0;
+  }
+  
+  a img{
+    border: 0px;
+  }
+  
+  ::-moz-selection {
+    background-color: black;
+    color: #fff;
+  }
+  
+  ::selection {
+    background-color: black;
+    color: #fff;
+  }
+  
+  .web-search-box .mdl-textfield__input {
+    color: rgba(0, 0, 0, 0.87);
+  }
+  
+  .web-header {
+    z-index: 50;
+    margin: 0 !important;
+  }
+  
+  
+  .mdl-textfield--expandable {
+    width: auto;
+  }
+  
+  .web-fab {
+    position: absolute;
+    right: 20%;
+    bottom: -26px;
+    z-index: 3;
+    background: #64ffda !important;
+    color: #757575 !important;
+  }
+  
+  
+  .fourAm-logo-image {
+    height: 100px;
+    width: 300px;
+
+  }
+  
+  
+  .web-header {
+    overflow: visible;
+    background-color: white;
+  }
+  
+    .web-header .material-icons {
+      color: #767777 !important;
+    }
+  
+    .web-header {
+      background: transparent;
+      color: #767777;
+    }
+  
+    .web-header .mdl-navigation__link {
+      color: #757575;
+      font-weight: 700;
+      font-size: 14px;
+    }
+  
+    .web-navigation-container {
+      /* Simple hack to make the overflow happen to the left instead... */
+      direction: rtl;
+      -webkit-order: 1;
+          -ms-flex-order: 1;
+              order: 1;
+      width: 500px;
+      transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+          width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  
+    .web-navigation {
+      /* ... and now make sure the content is actually LTR */
+      direction: ltr;
+      -webkit-justify-content: flex-end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      width: 800px;
+    }
+  
+    .web-search-box.is-focused + .web-navigation-container {
+      opacity: 0;
+      width: 100px;
+    }
+  
+  
+    .web-navigation .mdl-navigation__link {
+      display: inline-block;
+      height: 60px;
+      line-height: 68px;
+      background-color: transparent !important;
+      border-bottom: 4px solid transparent;
+    }
+  
+      .web-navigation .mdl-navigation__link:hover {
+        border-bottom: 4px solid #757575;
+      }
+  
+    .web-search-box {
+      -webkit-order: 2;
+          -ms-flex-order: 2;
+              order: 2;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  
+    .web-more-button {
+      -webkit-order: 3;
+          -ms-flex-order: 3;
+              order: 3;
+    }
+  
+  
+  .web-drawer {
+    border-right: none;
+  }
+  
+    .web-drawer-separator {
+      height: 1px;
+      background-color: #dcdcdc;
+      margin: 8px 0;
+    }
+  
+    .web-drawer .mdl-navigation__link.mdl-navigation__link {
+      font-size: 14px;
+      color: #757575;
+    }
+  
+    .web-drawer span.mdl-navigation__link.mdl-navigation__link {
+      color: #757575;
+    }
+  
+    .web-drawer .mdl-layout-title {
+      position: relative;
+      background: black;
+      height: 160px;
+    }
+  
+      .web-drawer .web-logo-image {
+        position: absolute;
+        bottom: 16px;
+      }
+  
+  .web-be-together-section {
+    position: relative;
+    height: 800px;
+    width: auto;
+    background-color: #f3f3f3;
+    background: url('/Users/haigbedros/dev/4am-project/assets/images/bar.jpg') center 30% no-repeat;
+    background-size: cover;
+  }
+  
+  .logo-font {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    line-height: 1;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .web-slogan {
+    font-size: 60px;
+    padding-top: 160px;
+  }
+  
+  .web-sub-slogan {
+    font-size: 21px;
+    padding-top: 24px;
+  }
+  
+  .web-create-character {
+    font-size: 21px;
+    padding-top: 400px;
+  }
+  
+    .web-create-character a {
+      text-decoration: none;
+      color: #767777;
+      font-weight: 300;
+    }
+  
+  .web-screen-section {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+  
+  .web-screens {
+    text-align: right;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  
+  .web-screen {
+    text-align: center;
+  }
+  
+  .web-screen .web-link {
+    margin-top: 16px;
+    display: block;
+    z-index: 2;
+  }
+  
+  .web-image-link {
+    text-decoration: none;
+  }
+  
+  .web-wear {
+    display: inline-block;
+    width: 160px;
+    margin-right: 32px;
+  }
+  
+    .web-wear .web-screen-image {
+      width: 40%;
+      z-index: 1;
+    }
+  
+  
+  .web-phone {
+    display: inline-block;
+    width: 64px;
+    margin-right: 48px;
+  }
+  
+    .web-phone .web-screen-image {
+      width: 100%;
+      z-index: 1;
+    }
+  
+  
+  .web-tablet {
+    display: inline-block;
+    width: 110px;
+    margin-right: 64px;
+  }
+  
+    .web-tablet .web-screen-image {
+      width: 100%;
+      z-index: 1;
+    }
+  
+    .web-tablet .web-link {
+      display: block;
+      z-index: 2;
+    }
+  
+  
+  .web-tv {
+    display: inline-block;
+    width: 300px;
+    margin-right: 80px;
+  }
+  
+    .web-tv .web-screen-image {
+      width: 100%;
+      z-index: 1;
+    }
+  
+  
+  .web-auto {
+    display: inline-block;
+    width: 300px;
+    overflow: hidden;
+  }
+  
+    .web-auto .web-screen-image {
+      display: block;
+      height: 300px;
+      z-index: 1;
+    }
+  
+  
+  .web-wear-section {
+    position: relative;
+    background: url('images/wear.png') center top no-repeat;
+    background-size: cover;
+    height: 800px;
+  }
+  
+  .web-wear-band {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #37474f;
+  }
+  
+  .web-wear-band-text {
+    max-width: 800px;
+    margin-left: 25%;
+    padding: 24px;
+    text-align: left;
+    color: white;
+  }
+  
+    .web-wear-band-text p {
+      padding-top: 8px;
+    }
+  
+  .web-link {
+    text-decoration: none;
+    color: #757575 !important;
+  }
+  
+    .web-link:hover {
+      color: black !important;
+    }
+  
+    .web-link .material-icons {
+      position: relative;
+      top: -1px;
+      vertical-align: middle;
+    }
+  
+  .web-alt-link {
+    text-decoration: none;
+    color: #64ffda !important;
+    font-size: 16px;
+  }
+  
+    .web-alt-link:hover {
+      color: #00bfa5 !important;
+    }
+  
+    .web-alt-link .material-icons {
+      position: relative;
+      top: 6px;
+    }
+  
+  .web-customized-section {
+    text-align: center;
+  }
+  
+  .web-customized-section-text {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 80px 16px 0 16px;
+  }
+  
+    .web-customized-section-text p {
+      padding-top: 16px;
+    }
+  
+  .web-customized-section-image {
+    background: url('images/devices.jpg') center top no-repeat;
+    background-size: cover;
+    height: 400px;
+  }
+  
+  .web-more-section {
+    padding: 80px 0;
+    max-width: 1044px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+    .web-more-section .web-section-title {
+      margin-left: 12px;
+      padding-bottom: 24px;
+    }
+  
+
+  
+    .web-card-container .mdl-card__media {
+      overflow: hidden;
+      background: transparent;
+    }
+  
+      .web-card-container .mdl-card__media img {
+        width: 100%;
+      }
+  
+    .web-card-container .mdl-card__title {
+      background: transparent;
+      height: auto;
+    }
+  
+    .web-card-container .mdl-card__title-text {
+      color: #757575;
+      height: auto;
+    }
+  
+    .web-card-container .mdl-card__supporting-text {
+      height: auto;
+      color: #757575;
+      padding-bottom: 56px;
+    }
+  
+    .web-card-container .mdl-card__actions {
+      position: absolute;
+      bottom: 0;
+    }
+  
+    .web-card-container .mdl-card__actions a {
+      border-top: none;
+      font-size: 16px;
+    }
+  
+  .web-footer {
+    background-color: #fafafa;
+    position: relative;
+  }
+  
+    .web-footer a:hover {
+      color: #757575;
+    }
+  
+    .web-footer .mdl-mega-footer--top-section::after {
+      border-bottom: none;
+    }
+  
+    .web-footer .mdl-mega-footer--middle-section::after {
+      border-bottom: none;
+    }
+  
+    .web-footer .mdl-mega-footer--bottom-section {
+      position: relative;
+    }
+  
+    .web-footer .mdl-mega-footer--bottom-section a {
+      margin-right: 2em;
+    }
+  
+    .web-footer .mdl-mega-footer--right-section a .material-icons {
+      position: relative;
+      top: 6px;
+    }
+  
+  
+  .web-link-menu:hover {
+    cursor: pointer;
+  }
+  
+  
+  /**** Mobile layout ****/
+  @media (max-width: 900px) {
+    .web-navigation-container {
+      display: none;
+    }
+  
+    .web-title {
+      display: none !important;
+    }
+  
+    .web-mobile-title {
+      display: block !important;
+      position: absolute;
+      left: calc(50% - 70px);
+      top: 12px;
+      transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  
+    /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+       consecutive "+" operators in some cases. Therefore, we need to use both
+       here to cover all the bases. */
+    .web.web-search-box.is-focused ~ .web-mobile-title,
+    .web-search-box.is-focused + .web-navigation-container + .web-mobile-title {
+      opacity: 0;
+    }
+  
+    .web-more-button {
+      display: none;
+    }
+  
+    .web-search-box.is-focused {
+      width: calc(100% - 48px);
+    }
+  
+    .web-search-box .mdl-textfield__expandable-holder {
+      width: 100%;
+    }
+  
+    .web-be-together-section {
+      height: 200px;
+    }
+  
+    .web-slogan {
+      font-size: 26px;
+      margin: 0 16px;
+      padding-top: 24px;
+    }
+  
+    .web-sub-slogan {
+      font-size: 16px;
+      margin: 0 16px;
+      padding-top: 8px;
+    }
+  
+    .web-create-character {
+      padding-top: 200px;
+      font-size: 16px;
+    }
+  
+    .web-create-character img {
+      height: 12px;
+    }
+  
+    .web-fab {
+      display: none;
+    }
+  
+    .web-wear-band-text {
+      margin-left: 0;
+      padding: 16px;
+    }
+  
+    .web-footer .mdl-mega-footer--bottom-section {
+      display: none;
+    }
+  }
+  
+  
+  
