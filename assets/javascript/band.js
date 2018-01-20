@@ -4,7 +4,7 @@ $(".main-artist").hide();
 
 function queryProxy(requestUrl, apiKey) {
 
-    const proxy = 'https://proxy.bhsplex.com/';
+    const proxy = 'https://still-fortress-80643.herokuapp.com/';
     let response = undefined;
     var requestUrl = 'http://api.bandsintown.com/artists/' + artistSearchTerm + '.json?api_version=2.0&app_id=project-4am';
     $.ajax({
@@ -27,7 +27,7 @@ function queryProxy(requestUrl, apiKey) {
             artistResult.append(artist);
             artistShows.append(artistTourDates);
             upcomingShows.append("Upcoming shows: " + upcomingShowsCount);
-            $(".artist").append(artistThumbImg, artistResult, upcomingShows);
+            $(".main-artist").append(artistThumbImg, artistResult, upcomingShows);
         }
     })
 
@@ -37,7 +37,7 @@ function queryProxy(requestUrl, apiKey) {
 
 
 function queryShows(showRequestUrl, apiKey) {
-    const proxy = 'https://proxy.bhsplex.com/';
+    const proxy = 'https://still-fortress-80643.herokuapp.com/';
     let response = undefined;
     var showRequestUrl = "http://api.bandsintown.com/artists/" + artistSearchTerm + "/events.json?api_version=2.0&app_id=project-4am";
     $.ajax({
@@ -69,7 +69,7 @@ function queryShows(showRequestUrl, apiKey) {
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus);
-            $(".artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
+            $(".main-artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
         }
     })
 }
@@ -88,10 +88,11 @@ $("#initializeSearch").on("click", function () {
             return true;
         }
     }
-    emptyInput();
+    
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
     $(".main-artist").show();
+    emptyInput();
     $("#userInput").val("");
 })
 
