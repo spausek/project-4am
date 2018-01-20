@@ -35,7 +35,7 @@ function newYelpQuery(){
 		},
 		 
 		setLocationAddress : function(venue){
-			this.params.location = "&location=" + venue.address1 + "," + venue.city + "," venue.state;
+			this.params.location = "&location=" + venue.address1 + "," + venue.city + "," + venue.state;
 		},
 		setLocationCoords : function(venue){
 			this.params.latitude = "&latitude=" + venue.latitude;
