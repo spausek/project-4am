@@ -64,7 +64,7 @@ function queryShows(showRequestUrl, apiKey) {
             var artistShowLocation = $("<div class='show-location'>");
             var showDateTime = $("<div class='show-date-time'>");
             var artistTicketStatus = $("<div class='ticket-status'>");
-            var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + "target='_blank'> Buy Tickets </a>");
+            var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
             artistShowHeadline.append(shows);
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
