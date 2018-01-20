@@ -15,6 +15,10 @@ function createBusiness(jsonBusiness){
 	return Business;
 }
 
+//let YelpQuery = newYelpQuery();
+// YelpQuery.setLocationCoords(venue)
+//YelpQuery.setRadius(miles)
+//YelpQuery.queryBusinesses(YelpQuery)
 function newYelpQuery(){
 
 	const YelpQuery = {
@@ -24,16 +28,19 @@ function newYelpQuery(){
 		businesses : [],
 		currentOffset : 0,
 		totalResults: 0,
+		limitNumber : 25,
+		offsetNumber : 0,
 		params : {
 			address : undefined,
 			latitude: undefined,
 			longitude: undefined,
 			term : "&categories=bars,restaurants",
 			radius : undefined,
-			offset: "&offset=0", //on forwardclick, offset += limit. On backclic, offset -= limit
+			offset: "&offset=0",
 			limit: "&limit=25", //25 per page/search
 		},
 		 
+
 		setLocationAddress : function(venue){
 			this.params.location = "&location=" + venue.address1 + "," + venue.city + "," + venue.state;
 		},
@@ -44,6 +51,13 @@ function newYelpQuery(){
 		setRadius : function(miles){
 			this.params.radius = "&radius=" + milesToMeters(miles);
 		},
+		setOffset : function(offset){
+			if(offset < 0){
+				offset = 0;
+			}
+			this.offsetNumber += offset;
+			this.params.offset = "&offset="+offset;
+		}
 		parseLocationData : function(jsonData){
 			const YelpQuery = this;
 			this.totalResults = jsonData.total;
@@ -53,6 +67,14 @@ function newYelpQuery(){
 			});
 
 		},
+		queryMore : function(){
+			setOffset(limitNumber);
+			queryBusinesses(this);
+		},
+		queryLess : function(){
+			setOffset(offsetNumber - limitNumber);
+			querBusinesses(this);
+		}
 		createQueryURL : function(){
 			let queryURL = this.endpoint + this.params.location + this.params.term + this.params.radius;
 			queryURL += this.params.limit + this.params.offset;
