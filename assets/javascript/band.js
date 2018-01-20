@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    
+
+$(".main-artist").hide();
+
 function queryProxy(requestUrl, apiKey) {
 
     const proxy = 'https://proxy.bhsplex.com/';
@@ -25,7 +27,7 @@ function queryProxy(requestUrl, apiKey) {
             artistResult.append(artist);
             artistShows.append(artistTourDates);
             upcomingShows.append("Upcoming shows: " + upcomingShowsCount);
-            $(".artist").append(artistThumbImg, artistResult, upcomingShows, artistShows);
+            $(".artist").append(artistThumbImg, artistResult, upcomingShows);
         }
     })
 
@@ -62,22 +64,35 @@ function queryShows(showRequestUrl, apiKey) {
             var artistShowLocation = $("<div class='show-location'>");
             var showDateTime = $("<div class='show-date-time'>");
             var artistTicketStatus = $("<div class='ticket-status'>");
+            var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
             artistShowHeadline.append(shows);
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus);
-            $(".artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus);
+            $(".artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
         }
     })
 }
 
-$("#artistSearch").on("click", function () {
+$("#initializeSearch").on("click", function () {
     event.preventDefault();
-    var artistTerm = $("#userInput").val().trim();
+    var artistTerm = $("#formSearch").val().trim();
     artistSearchTerm = artistTerm.split(" ").join("%20");
-    $("#userInput").val("");
-    $(".artist").empty();
+    $(".main-artist").empty();
+    function emptyInput() {
+        if ($("#formSearch").val() === "") {
+            $(".main-artist").hide();
+            $("#myModal").modal();
+            return false;
+        }else {
+            return true;
+        }
+    }
+    emptyInput();
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
+    $(".main-artist").show();
+    $("#userInput").val("");
 })
+
 })
