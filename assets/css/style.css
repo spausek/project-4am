@@ -164,7 +164,14 @@ body {
     background-size: cover;
   }
 
-  /* .main-artist {
+  /* modal button*/
+  .btn-primary{
+    position: absolute;
+    visibility: hidden;
+  }
+
+  /* new info table */
+  .main-artist {
     float: left;
     margin-left: 50px;
     width: 33%;
@@ -173,7 +180,8 @@ body {
     background-color: whitesmoke;
     color: black;
     overflow: scroll;
-  } */
+    visibility: hidden;
+  }
 
   /*/ search box/*/
   #custom-search-input{
@@ -182,6 +190,22 @@ body {
     border-radius: 6px;
     background-color: #fff;
     margin-top: 10px;
+}
+
+/* loading */
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: ;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 #custom-search-input input{

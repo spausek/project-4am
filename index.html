@@ -52,7 +52,7 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
               click me
           </button>
-          
+
     <!--THIS IS WHERE I CHANGED THE ID OF THE MODAL TO myModal, IT RUNS USING THAT ID-->
           <div class="modal fade" id="myModal">
               <div class="modal-dialog">
@@ -62,7 +62,7 @@
                           <h4>Whoops! Please enter an artist or a band.</h4>
                       </div>
 
-                      <div class="modal-footer">
+                      <div class="modal-footer" id="modal-btn">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                   </div>
@@ -71,6 +71,17 @@
       </div>
     </div>
     <!-- modal button ends -->
+
+    <!-- loading -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loadModal">
+      Load Test
+  </button>
+
+<div class="modal fade" id="loadModal">
+    <div class="modal-dialog text-center">
+        <div class="loader text-center"></div>
+    </div>
+  </div>
       
 
       <div class="web-content mdl-layout__content">
@@ -107,10 +118,11 @@
           <div class="logo-font web-sub-slogan">welcome to our website... be yourself. do your thing. see what's going on.</div>
           <div class="main"></div>
 
-          <!-- Artist info div starts -->
-          <div class="main-artist"></div>
+           <!-- Artist info div starts -->
+           <div class="main-artist"></div>
           <!-- Artist info div ends -->
 
+           
 
           <a href="#screens">
             <button class="web-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
@@ -195,6 +207,7 @@
             </div>
           </div>
         </div>
+
 
         <footer class="web-footer mdl-mega-footer">
           <div class="mdl-mega-footer--top-section">
