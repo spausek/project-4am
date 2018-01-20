@@ -164,8 +164,18 @@ body {
     background-size: cover;
   }
 
-  /*/ search box/*/
+  /* .main-artist {
+    float: left;
+    margin-left: 50px;
+    width: 33%;
+    height: 400px;
+    opacity: 0.8;
+    background-color: whitesmoke;
+    color: black;
+    overflow: scroll;
+  } */
 
+  /*/ search box/*/
   #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;
@@ -199,7 +209,6 @@ body {
 #custom-search-input .glyphicon-search{
     font-size: 23px;
 }
-
 /*/ search box/*/
 
   .logo-font {

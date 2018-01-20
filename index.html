@@ -46,30 +46,31 @@
       </div>
 
        <!-- modal button -->
-       <div class="container">
-          <div class="row">
+    <div class="container">
+      <div class="row">
 
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#empty-return-modal">
-            click me
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              click me
           </button>
+          
+    <!--THIS IS WHERE I CHANGED THE ID OF THE MODAL TO myModal, IT RUNS USING THAT ID-->
+          <div class="modal fade" id="myModal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
 
-          <div class="modal fade" id="empty-return-modal">
-              <div class="modal-dialog"> 
-                <div class="modal-content">
+                      <div class="modal-body">
+                          <h4>Whoops! Please enter an artist or a band.</h4>
+                      </div>
 
-                  <div class="modal-body">
-                    <h4>please fill in the required part</h4>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
                   </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
               </div>
           </div>
-        </div>
-        </div>
-          <!-- modal button ends -->
+      </div>
+    </div>
+    <!-- modal button ends -->
       
 
       <div class="web-content mdl-layout__content">
@@ -82,21 +83,23 @@
           <div class="container">
           <div class="row">
 
-          <div class="col-md-3"></div>  
-          <div class="col-md-6">
-            <div id="custom-search-input">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <div id="custom-search-input">
               <div class="input-group col-md-12">
-              <input type="text" class="form-control input-lg" placeholder="search a place or a band" />
-          <span class="input-group-btn">
-              <button class="btn btn-info btn-lg" type="button">
-                  <i class="glyphicon glyphicon-search"></i>
+                <!--THIS IS WHERE THE SEARCH ID (formSearch) IS FOR THE FORM AND THE CLICK-->
+                <input type="text" class="form-control input-lg" id="formSearch" placeholder="search for band or artist"/>
+                <span class="input-group-btn">
+                <!--THIS IS THE ID FOR THE CLICK (initializeSearch)-->
+                <button class="btn btn-info btn-lg" id="initializeSearch" type="button">
+                <i class="glyphicon glyphicon-search"></i>
               </button>
-          </span>
-                  </div>
-                </div>
-              </div>
-              
+            </span>
             </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+          </div>
           </div>
           <!-- search box ends -->
 
@@ -104,7 +107,10 @@
           <div class="logo-font web-sub-slogan">welcome to our website... be yourself. do your thing. see what's going on.</div>
           <div class="main"></div>
 
-         
+          <!-- Artist info div starts -->
+          <div class="main-artist"></div>
+          <!-- Artist info div ends -->
+
 
           <a href="#screens">
             <button class="web-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
