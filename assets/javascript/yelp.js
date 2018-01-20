@@ -57,7 +57,7 @@ function newYelpQuery(){
 			}
 			this.offsetNumber += offset;
 			this.params.offset = "&offset="+offset;
-		}
+		},
 		parseLocationData : function(jsonData){
 			const YelpQuery = this;
 			this.totalResults = jsonData.total;
@@ -74,7 +74,7 @@ function newYelpQuery(){
 		queryLess : function(){
 			setOffset(offsetNumber - limitNumber);
 			querBusinesses(this);
-		}
+		},
 		createQueryURL : function(){
 			let queryURL = this.endpoint + this.params.location + this.params.term + this.params.radius;
 			queryURL += this.params.limit + this.params.offset;
