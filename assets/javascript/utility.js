@@ -8,3 +8,11 @@ function milesToMeters(miles){
 
 }
 
+function metersToMiles(meters){
+
+	const metersInAMile = 1610; //rounded up
+	const miles = meters / metersInAMile;
+
+	return miles;
+}
+
