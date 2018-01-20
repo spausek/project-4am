@@ -40,7 +40,7 @@ function newYelpQuery(){
 		setLocationCoords : function(venue){
 			this.params.latitude = "&latitude=" + venue.latitude;
 			this.params.longitude = "&longitude=" + venue.longitude;
-		}
+		},
 		setRadius : function(miles){
 			this.params.radius = "&radius=" + milesToMeters(miles);
 		},
@@ -60,7 +60,7 @@ function newYelpQuery(){
 			return queryURL;
 		},
 		queryBusinesses(YelpQuery){
-		    const proxy = 'https://proxy.bhsplex.com/';
+		    const proxy =  'https://still-fortress-80643.herokuapp.com/';
 		    let response = undefined;
 
 		    $.ajax({
@@ -80,5 +80,4 @@ function newYelpQuery(){
 	
 	return YelpQuery;
 }
-
 
