@@ -3,7 +3,7 @@ $(document).ready(function () {
 $(".main-artist").hide();
 
 function queryProxy(requestUrl, apiKey) {
-
+    $("#loadModal").modal("show");
     const proxy = 'https://still-fortress-80643.herokuapp.com/';
     let response = undefined;
     var requestUrl = 'http://api.bandsintown.com/artists/' + artistSearchTerm + '.json?api_version=2.0&app_id=project-4am';
@@ -29,6 +29,7 @@ function queryProxy(requestUrl, apiKey) {
             upcomingShows.append("Upcoming shows: " + upcomingShowsCount);
             $(".main-artist").append(artistThumbImg, artistResult, upcomingShows);
         }
+        $("#loadModal").modal("hide");
     })
 
     return response;
@@ -37,6 +38,7 @@ function queryProxy(requestUrl, apiKey) {
 
 
 function queryShows(showRequestUrl, apiKey) {
+    $("#loadModal").modal("show");
     const proxy = 'https://still-fortress-80643.herokuapp.com/';
     let response = undefined;
     var showRequestUrl = "http://api.bandsintown.com/artists/" + artistSearchTerm + "/events.json?api_version=2.0&app_id=project-4am";
@@ -70,6 +72,7 @@ function queryShows(showRequestUrl, apiKey) {
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus);
             $(".main-artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
+            $("#loadModal").modal("hide");
         }
     })
 }
@@ -81,6 +84,7 @@ $("#initializeSearch").on("click", function () {
     $(".main-artist").empty();
     function emptyInput() {
         if ($("#formSearch").val() === "") {
+            $("#loadModal").modal("hide");
             $(".main-artist").hide();
             $("#myModal").modal();
             return false;
@@ -88,7 +92,6 @@ $("#initializeSearch").on("click", function () {
             return true;
         }
     }
-    
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
     $(".main-artist").show();
