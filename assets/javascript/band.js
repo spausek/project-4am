@@ -96,7 +96,7 @@ $("#initializeSearch").on("click", function () {
     queryShows(artistSearchTerm);
     $(".main-artist").show();
     emptyInput();
-    $("#userInput").val("");
+    $("#formSearch").val("");
 })
 
 })
