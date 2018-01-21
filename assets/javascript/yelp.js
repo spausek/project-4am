@@ -24,7 +24,7 @@ function newYelpQuery(){
 	const YelpQuery = {
 
 		endpoint : "https://api.yelp.com/v3/businesses/search?",
-		key : 'z94reM3lKQzmJ32PufUqbY4Z_zPvw7alr_YBQUKfu0OP2SeG0kroCHhek_gjB_MCdSbz3bVy1VpisKuWK5CTRKxZ8nUofO_esywC7IfMLzjg3-bCVODgfxfOoWhaWnYx',
+		key : 'placeholder',
 		businesses : [],
 		currentOffset : 0,
 		totalResults: 0,
