@@ -61,6 +61,14 @@ function queryShows(showRequestUrl, apiKey) {
             //a venue name, let me know and I'll fix it.
             var yelpLatitude = data[i].venue.latitude;
             var yelpLongitude = data[i].venue.longitude;
+            //push data to arrays stored globally on maps.js
+            latitudeData.push(yelpLatitude);
+            longitudeData.push(yelpLongitude);
+            //create map marker
+            var marker = new google.maps.Marker({
+                position:{lat: latitudeData[i], lng: longitudeData[i]},
+                map: map
+            });
             //Back to the boring stuff
             var artistShowHeadline = $("<div class='show-headline'>");
             var artistShowLocation = $("<div class='show-location'>");
@@ -70,10 +78,13 @@ function queryShows(showRequestUrl, apiKey) {
             artistShowHeadline.append(shows);
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
-            artistTicketStatus.append("Ticket availability: " + ticketStatus);
+            artistTicketStatus.append("Ticket availability: " + ticketStatus.toUpperCase());
             $(".main-artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
             $("#loadModal").modal("hide");
         }
+            //Creates a center point at the first map coordinates
+            var firstMap = {lat: latitudeData[0], lng: longitudeData[0]};
+            map.setCenter(firstMap);
     })
 }
 
