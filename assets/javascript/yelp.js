@@ -40,9 +40,9 @@ function newYelpQuery(){
 			limit: "&limit=25", //25 per page/search
 		},
 		 
-
 		setLocationAddress : function(venue){
-			this.params.location = "&location=" + venue.address1 + "," + venue.city + "," + venue.state;
+
+			this.params.location = "&location=" + venue;//"&location=" + venue.address1 + "," + venue.city + "," + venue.state;
 		},
 		setLocationCoords : function(venue){
 			this.params.latitude = "&latitude=" + venue.latitude;
@@ -53,27 +53,32 @@ function newYelpQuery(){
 		},
 		setOffset : function(offset){
 			if(offset < 0){
-				offset = 0;
+				this.offsetNumber = 0;
 			}
-			this.offsetNumber += offset;
-			this.params.offset = "&offset="+offset;
+			else{
+				this.offsetNumber = offset;
+			}
+			
+			this.params.offset = "&offset="+this.offsetNumber;
 		},
 		parseLocationData : function(jsonData){
 			const YelpQuery = this;
-			this.totalResults = jsonData.total;
+			YelpQuery.businesses = [];
+			YelpQuery.totalResults = jsonData.total;
 
 			jsonData.businesses.map(function(business){
 				YelpQuery.businesses.push(createBusiness(business))
 			});
-
 		},
 		queryMore : function(){
-			setOffset(limitNumber);
-			queryBusinesses(this);
+			this.setOffset(this.limitNumber + this.offsetNumber);
+			this.queryBusinesses();
+			console.log("Querying more!" + "\n Offset: " + this.offsetNumber);
 		},
 		queryLess : function(){
-			setOffset(offsetNumber - limitNumber);
-			querBusinesses(this);
+			this.setOffset(this.offsetNumber - this.limitNumber);
+			this.queryBusinesses();
+			console.log("Querying less!" + "\n Offset: " + this.offsetNumber);
 		},
 		createQueryURL : function(){
 			let queryURL = this.endpoint + this.params.location + this.params.term + this.params.radius;
@@ -81,7 +86,9 @@ function newYelpQuery(){
 			
 			return queryURL;
 		},
-		queryBusinesses(YelpQuery){
+		queryBusinesses(){
+			$("#loadModal").modal("show");
+			const YelpQuery = this;
 		    const proxy =  'https://still-fortress-80643.herokuapp.com/';
 		    let response = undefined;
 
@@ -96,6 +103,7 @@ function newYelpQuery(){
 
 		        YelpQuery.parseLocationData(data);
 		        console.log(YelpQuery.businesses);
+		        $("#loadModal").modal("hide");
 		    });
 		}
 	}
@@ -103,3 +111,20 @@ function newYelpQuery(){
 	return YelpQuery;
 }
 
+$(document).ready(function () {
+
+	/*const YelpQuery = newYelpQuery();
+	YelpQuery.setLocationAddress("Los Angeles, California");
+	YelpQuery.setRadius(1);
+	YelpQuery.queryBusinesses();
+
+	$(document).on("click",".load-more-btn",function(){
+		YelpQuery.queryMore();
+	});
+
+	$(document).on("click",".load-less-btn",function(){
+		YelpQuery.queryLess();
+	});
+
+	*/
+});
