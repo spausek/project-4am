@@ -8,8 +8,8 @@ body {
 
 
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #8e4928; /* Blue */
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #785548; 
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -22,7 +22,7 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-  #view-source {
+  .view-source {
     position: fixed;
     display: block;
     right: 0;
@@ -62,7 +62,7 @@ body {
     right: 20%;
     bottom: -26px;
     z-index: 3;
-    background: #8e4928 !important;
+    background: #785548 !important;
     color: white !important;
   }
   
@@ -538,11 +538,6 @@ body {
     color: black !important;
 
   }
-
-  /* chat box */
-
-  /* chat box */
-  
   
   
   /**** Mobile layout ****/
@@ -563,9 +558,6 @@ body {
       transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
   
-    /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
-       consecutive "+" operators in some cases. Therefore, we need to use both
-       here to cover all the bases. */
     .web.web-search-box.is-focused ~ .web-mobile-title,
     .web-search-box.is-focused + .web-navigation-container + .web-mobile-title {
       opacity: 0;

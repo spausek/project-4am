@@ -1,3 +1,14 @@
+// haig: this is what i got to open and close the chat box//
+    $(function(){
+      $("#addClass").click(function () {
+                $('#qnimate').addClass('popup-box-on');
+                  });
+                
+                  $("#removeClass").click(function () {
+                $('#qnimate').removeClass('popup-box-on');
+                  });
+        });
+  
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBaNhtr-WTy7V5c5U1-6hgEpEuR3H51otI",
@@ -58,3 +69,4 @@
 
 
   });
+
