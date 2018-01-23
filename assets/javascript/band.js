@@ -103,11 +103,23 @@ $("#initializeSearch").on("click", function () {
             return true;
         }
     }
+    var instructionOne = "Click on a show & see where to eat!";
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
     $(".main-artist").show();
     emptyInput();
     $("#formSearch").val("");
+    $("#formSearch").empty();
+    $("#instOne").append(instructionOne);
+    $("#instOne").show();
+})
+
+
+//This is what should be clicked to display the Yelp info
+$("").on("click", function () {
+    event.preventDefault();
+    $("").empty();
+    $("").show();
 })
 
 })
