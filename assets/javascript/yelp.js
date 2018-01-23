@@ -167,8 +167,6 @@ function newYelpQuery(){
 
 		        YelpQuery.parseLocationData(data);
 		        console.log(YelpQuery.businesses);
-		        const Card = createCard(YelpQuery.businesses[0]);
-		        $('.web-card-container').append(Card.element);
 		        $("#loadModal").modal("hide");
 		    });
 		}
