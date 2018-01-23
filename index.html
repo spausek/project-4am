@@ -31,63 +31,16 @@
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
       <div class="web-header mdl-layout__header mdl-layout__header--waterfall">
+
       <div class="mdl-layout__header-row">
-      <!-- Add spacer, to align navigation to the right in desktop -->
-      <div class="web-header-spacer mdl-layout-spacer"></div>
 
+      <!-- write the instruction of the steps here -->
+      <div id="instOne" class="mdl-typography--display-1-color-contrast text-center mdl-cell--12-col">step 1</div>
+      <div id="instTwo" class="mdl-typography--display-1-color-contrast text-center mdl-cell--12-col">step 2</div>
 
-
-        <!-- navigation bar -->
-        <div class="web-navigation-container">
-
-        <!-- chat box -->
-              <div class="container text-center">
-              <div class="row">
-
-                <!-- chat with friends button -->
-                <div class="round hollow text-center">
-                    <a href="#" id="addClass" class="view-source mdl-chat-click mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--brown mdl-color-text--accent-contrast"><span class="glyphicon glyphicon-comment"></span> Chat around</a>
-                </div>
-
-                </div>
-                </div>
-
-                <div class="popup-box chat-popup" id="qnimate">
-                <div class="popup-head">
-                <div class="popup-head-left pull-left">Chat</div>
-                <div class="popup-head-right pull-right"> 
-                <button data-widget="remove" id="removeClass" class="chat-header-button pull-right" type="button"><i class="glyphicon glyphicon-off"></i></button>
-                </div>
-                </div>
-
-
-                <div class="popup-messages"> 
-                <div class="direct-chat-messages">
-
-                <!-- Message. Default to the left -->
-                <div class="direct-chat-info clearfix">
-                <span class="direct-chat-name pull-left">:Username</span>
-                </div>
-                <!-- /.direct-chat-info -->
-                <div class="direct-chat-text">chat goes here</div>
-
-
-                </div>
-                </div>
-
-                <div class="popup-messages-footer">
-                <textarea id="status_message" placeholder="Type a message..." rows="10" cols="40" name="message"></textarea>
-              </div>
-              </div>
-        <!-- chat box -->
-
-
-        <!-- navigation list --> 
-          <nav class="web-navigation mdl-navigation">
-            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Bars</a>
-            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Bands</a>
-          </nav>
-
+      <div class="web-navigation-container">
+             
+      
       </div>
 
       </div>
@@ -137,6 +90,7 @@
           <div class="web-be-together-section mdl-typography--text-center">
         <div class="logo-font web-slogan"><img class="fourAm-logo-image" src="./assets/images/4am-logo-white.png"></div>  
 
+         
         <!-- search box starts -->
           <div class="container">
           <div class="row">
@@ -165,14 +119,16 @@
         <!-- search box ends -->
 
         <!-- p -->
-        <div class="logo-font web-sub-slogan">welcome to our website... be yourself. do your thing. see what's going on.</div>
+        <div id="p" class="logo-font web-sub-slogan">welcome to our website... be yourself. do your thing. see what's going on.</div>
         <div class="main"></div>
 
         <!-- Artist info div -->
         <div class="main-artist"></div>
 
+        <!-- map div -->
+        <div class="main-events-map"></div>
 
-           
+
         <!-- random suggestions screen -->
         <a href="#screens">
           <button class="web-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
@@ -246,7 +202,7 @@
                 <h4 class="mdl-card__title-text">Option 4</h4>
             </div>
             <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--font-light mdl-typography--subhead">info about option 3</span>
+              <span class="mdl-typography--font-light mdl-typography--subhead">info about option 4</span>
             </div>
             <div class="mdl-card__actions">
                 <a class="web-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
@@ -260,7 +216,7 @@
         
       </div>
 
-        <!-- footer -->
+        <!-- footer & chat box -->
         <footer class="web-footer mdl-mega-footer">
           <div class="mdl-mega-footer--top-section">
             <div class="mdl-mega-footer--left-section">
@@ -286,6 +242,49 @@
             <a class="web-link mdl-typography--font-light" href="">Blog</a>
             <a class="web-link mdl-typography--font-light" href="">Privacy Policy</a>
 
+          <!-- chat box -->
+          <div class="container text-center">
+          <div class="row">
+
+          <!-- chat with friends button -->
+              <div class="round hollow text-center">
+              <a href="#" id="addClass" class="view-source mdl-chat-click mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--brown mdl-color-text--accent-contrast"><span class="glyphicon glyphicon-comment"></span> Chat around</a>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="popup-box chat-popup" id="qnimate">
+            <div class="popup-head">
+              <div class="popup-head-left pull-left">Chat</div>
+                <div class="popup-head-right pull-right"> 
+                  <button data-widget="remove" id="removeClass" class="chat-header-button pull-right" type="button"><i class="glyphicon glyphicon-off"></i></button>
+              </div>
+          </div>
+
+
+          <div class="popup-messages"> 
+          `<div class="direct-chat-messages">
+            
+          <!-- Message. Default to the left -->
+          <div class="direct-chat-msg doted-border">
+            <div class="direct-chat-info clearfix">
+            <span class="direct-chat-name pull-left">Username:</span>
+          </div>
+
+          <!-- /.direct-chat-info -->
+          <div class="direct-chat-text">chat goes here</div>
+
+            </div>
+
+            </div>
+          </div>
+
+          <div class="popup-messages-footer">
+            <textarea id="status_message" placeholder="Type a message..." rows="10" cols="40" name="message"></textarea>
+            </div>
+          </div>
+          <!-- chat box -->
         </footer>
 
         </div>

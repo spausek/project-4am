@@ -13,9 +13,11 @@ body
     display: none;
     height: 415px;
     position: fixed;
-    left: 70px;
+    right: 70px;
     width: 300px;
     font-family: 'Open Sans', sans-serif;
+    z-index: 999;
+
 }
 
 .popup-box-on {
@@ -30,7 +32,7 @@ body
     font-size: 21px;
     padding: 7px 10px;
     width: 100%;
-     font-family: Oswald;
+    font-family: Oswald;
 }
 
 .popup-box .popup-head .popup-head-left {
@@ -45,6 +47,7 @@ body
     border: medium none;
     width: 95% !important;
     
+    
 }
 
 .popup-messages-footer {
@@ -58,12 +61,6 @@ body
     overflow: hidden;
     padding: 2px 5px 10px 6px;
     width: 100%;
-}
-
-.popup-box .popup-messages {
-    background: #e1e1e1 none repeat scroll 0 0;
-    height: 275px;
-    overflow: auto;
 }
 
 .direct-chat-messages {
@@ -87,6 +84,7 @@ body
     font-size: 14px;
     height: 30px;
     width: 30px;
+    margin-top: 10px;
 }
 
 
@@ -144,60 +142,6 @@ body
     position: relative;
 }
 
-.popup-messages .doted-border::after {
-	background: transparent none repeat scroll 0 0 !important;
-    border-left: 2px dotted #fff !important;
-	bottom: 0;
-    content: "";
-    left: 17px;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    width: 2px;
-	display: inline;
-	z-index: -2;
-}
-
-.popup-messages .direct-chat-msg::after {
-    background: #fff none repeat scroll 0 0;
-    border-left: medium none;
-    bottom: 0;
-    content: "";
-    left: 17px;
-    margin: 0px;
-    position: absolute;
-    top: 0;
-    width: 2px;
-	display: inline;
-	z-index: -2;
-}
-
-.direct-chat-text::after, .direct-chat-text::before {   
-    border-color: transparent #fff transparent transparent;    
-}
-
-.direct-chat-text::after, .direct-chat-text::before {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-top-colors: none;
-    border-color: transparent #fff transparent transparent;
-    border-image: none;
-    border-width: medium;
-    content: " ";
-    height: 0;
-    pointer-events: none;
-    position: absolute;
-    left: 100%;
-    top: 15px;
-    width: 0;
-}
-
-.direct-chat-text::after {
-    border-width: 5px;
-    margin-top: -5px;
-}
-
 .popup-messages .direct-chat-text {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #fff;
@@ -213,4 +157,5 @@ body
     margin: 0 30px 0 2px;
     padding: 5px 10px;
     position: relative;
+
 }

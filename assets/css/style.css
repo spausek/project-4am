@@ -189,7 +189,7 @@ body {
   /* new info table */
   .main-artist {
     float: left;
-    margin-left: 50px;
+    margin: 10px 20px 10px 100px;
     width: 33%;
     height: 400px;
     opacity: 0.8;
@@ -198,6 +198,21 @@ body {
     font-size: 18px;
     overflow: scroll;
   }
+
+   /* maps table */
+   .main-artist {
+    float: left;
+    margin: 10px 20px 10px 100px;
+    width: 33%;
+    height: 400px;
+    opacity: 0.8;
+    background-color: #ccc;
+    color: black;
+    font-size: 18px;
+    overflow: scroll;
+  }
+
+  
 
   /*/ search box/*/
   #custom-search-input{
@@ -211,7 +226,7 @@ body {
 /* loading */
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border-top: 16px solid #785548; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -538,81 +553,3 @@ body {
     color: black !important;
 
   }
-  
-  
-  /**** Mobile layout ****/
-  @media (max-width: 900px) {
-    .web-navigation-container {
-      display: none;
-    }
-  
-    .web-title {
-      display: none !important;
-    }
-  
-    .web-mobile-title {
-      display: block !important;
-      position: absolute;
-      left: calc(50% - 70px);
-      top: 12px;
-      transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-  
-    .web.web-search-box.is-focused ~ .web-mobile-title,
-    .web-search-box.is-focused + .web-navigation-container + .web-mobile-title {
-      opacity: 0;
-    }
-  
-    .web-more-button {
-      display: none;
-    }
-  
-    .web-search-box.is-focused {
-      width: calc(100% - 48px);
-    }
-  
-    .web-search-box .mdl-textfield__expandable-holder {
-      width: 100%;
-    }
-  
-    .web-be-together-section {
-      height: 200px;
-    }
-  
-    .web-slogan {
-      font-size: 26px;
-      margin: 0 16px;
-      padding-top: 24px;
-    }
-  
-    .web-sub-slogan {
-      font-size: 16px;
-      margin: 0 16px;
-      padding-top: 8px;
-    }
-  
-    .web-create-character {
-      padding-top: 200px;
-      font-size: 16px;
-    }
-  
-    .web-create-character img {
-      height: 12px;
-    }
-  
-    .web-fab {
-      display: none;
-    }
-  
-    .web-wear-band-text {
-      margin-left: 0;
-      padding: 16px;
-    }
-  
-    .web-footer .mdl-mega-footer--bottom-section {
-      display: none;
-    }
-  }
-  
-  
-  
