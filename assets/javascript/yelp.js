@@ -1,3 +1,67 @@
+function createCardHandler(){
+
+	const CardHandler = {
+
+		cardList : [],
+		cardContainer : $('.card-container'),
+
+		showCards : function(){
+			const CardHandler = this;
+			CardHandler.cardList.map(function(card){CardHandler.cardContainer.append(card)});
+		},
+		clearCards : function(){
+			this.cardContainer.empty();
+			this.cardList = [];
+		}
+
+
+	}
+
+
+}
+
+function createCard(business){
+
+	const Card = {
+
+		name : business.name,
+		location : business.location,
+		imageURL : business.imageURL,
+		yelpURL : business.url,
+		element : undefined,
+		createCardElement : function(){
+			this.element = '';
+			this.element +='<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">';
+			this.element += '<div class="mdl-card__media">'
+            this.element += '<img src="' + this.imageURL + '">';
+            this.element += '</div>';
+            this.element += '<div class="mdl-card__title">';
+            this.element += '<h4 class="mdl-card__title-text">' + this.name + '</h4>';
+            this.element += '</div>';
+            this.element += '<div class="mdl-card__supporting-text">';
+            this.element += '<span class="mdl-typography--font-light mdl-typography--subhead">info about option 2</span>';
+            this.element += '</div>';
+            this.element += '<div class="mdl-card__actions">';
+            this.element += '<a class="web-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="' + this.yelpURL + '">';
+            this.element += 'Let\'s Eat!';
+            this.element += '<i class="material-icons">chevron_right</i>';
+            this.element += '</a>';
+            this.element += '</div>';
+            this.element += '</div>';
+
+
+
+		}
+
+	}
+
+	Card.createCardElement();
+
+
+	return Card;
+
+}
+
 function createBusiness(jsonBusiness){
 
 	const Business = {
@@ -103,6 +167,8 @@ function newYelpQuery(){
 
 		        YelpQuery.parseLocationData(data);
 		        console.log(YelpQuery.businesses);
+		        const Card = createCard(YelpQuery.businesses[0]);
+		        $('.web-card-container').append(Card.element);
 		        $("#loadModal").modal("hide");
 		    });
 		}
@@ -112,8 +178,8 @@ function newYelpQuery(){
 }
 
 $(document).ready(function () {
-
-	/*const YelpQuery = newYelpQuery();
+/*
+	const YelpQuery = newYelpQuery();
 	YelpQuery.setLocationAddress("Los Angeles, California");
 	YelpQuery.setRadius(1);
 	YelpQuery.queryBusinesses();
