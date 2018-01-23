@@ -33,11 +33,9 @@
   	console.log(msgText);
 
   	if (msgText ==='' || msgUser === ''){
-      //alert for testing 
-      alert('You Suck');
-  		return false;
-
-  	}
+      
+      return false;
+    }
 
   	//Object to be stored in firebase
 
