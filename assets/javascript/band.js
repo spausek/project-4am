@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
 $(".main-artist").hide();
+$("#instOne").hide();
 
 function queryProxy(requestUrl, apiKey) {
     $("#loadModal").modal("show");
