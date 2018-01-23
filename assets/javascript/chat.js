@@ -2,10 +2,12 @@
     $(function(){
       $("#addClass").click(function () {
                 $('#qnimate').addClass('popup-box-on');
+                $("#addClass").hide();
                   });
                 
                   $("#removeClass").click(function () {
                 $('#qnimate').removeClass('popup-box-on');
+                $("#addClass").show();
                   });
         });
   
