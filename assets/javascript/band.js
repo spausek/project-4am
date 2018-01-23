@@ -62,13 +62,13 @@ function queryShows(showRequestUrl, apiKey) {
             var yelpLatitude = data[i].venue.latitude;
             var yelpLongitude = data[i].venue.longitude;
             //push data to arrays stored globally on maps.js
-            latitudeData.push(yelpLatitude);
-            longitudeData.push(yelpLongitude);
+            //latitudeData.push(yelpLatitude);
+            //longitudeData.push(yelpLongitude);
             //create map marker
-            var marker = new google.maps.Marker({
-                position:{lat: latitudeData[i], lng: longitudeData[i]},
-                map: map
-            });
+            //var marker = new google.maps.Marker({
+            //    position:{lat: latitudeData[i], lng: longitudeData[i]},
+            //    map: map
+            //});
             //Back to the boring stuff
             var artistShowHeadline = $("<div class='show-headline'>");
             var artistShowLocation = $("<div class='show-location'>");
@@ -83,8 +83,8 @@ function queryShows(showRequestUrl, apiKey) {
             $("#loadModal").modal("hide");
         }
             //Creates a center point at the first map coordinates
-            var firstMap = {lat: latitudeData[0], lng: longitudeData[0]};
-            map.setCenter(firstMap);
+            //var firstMap = {lat: latitudeData[0], lng: longitudeData[0]};
+            //map.setCenter(firstMap);
     })
 }
 
