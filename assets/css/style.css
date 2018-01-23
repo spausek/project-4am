@@ -193,10 +193,10 @@ body {
     width: 33%;
     height: 400px;
     opacity: 0.8;
-    background-color: whitesmoke;
+    background-color: #ccc;
     color: black;
+    font-size: 18px;
     overflow: scroll;
-    visibility: hidden;
   }
 
   /*/ search box/*/
