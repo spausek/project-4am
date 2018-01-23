@@ -17,7 +17,7 @@ function createCardHandler(){
 
 	}
 
-
+ 
 }
 
 function createCard(business){
