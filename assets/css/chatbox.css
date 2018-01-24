@@ -174,3 +174,29 @@ text:focus, input:focus{
     position: relative;
 
 }
+
+/* Kyle's section */
+
+#username {
+    width: 90%;
+    margin: 10px;
+}
+
+#text {
+    width: 90%;
+    margin-left: 10px;
+}
+
+#post {
+    margin: 10px 19px 0px 0px;
+    float: right;
+}
+.glyphicon-send{
+    color: white;
+}
+
+#message-display {
+    color: black;
+    overflow: auto;
+    height: 200px;
+}
