@@ -11,7 +11,7 @@ function createCardHandler(){
 		},
 		clearCards : function(){
 			this.cardContainer.empty();
-			this.cardList = [];
+			//this.cardList = [];
 		}
 
 
@@ -88,7 +88,7 @@ function newYelpQuery(){
 	const YelpQuery = {
 
 		endpoint : "https://api.yelp.com/v3/businesses/search?",
-		key : 'placeholder',
+		key : '4unWbK-_W7vBXhvUhRW7fAumTwLGgexZVlW1YgVVk87ns15LhHt6eektWb4pLt5S0XRadMk_O7QaoaRn_lWrWhPDTta5Miozmsn5re4I-w6AbnSc7q3aLe5RfhJkWnYx',
 		businesses : [],
 		currentOffset : 0,
 		totalResults: 0,
@@ -169,6 +169,7 @@ function newYelpQuery(){
 		        console.log(YelpQuery.businesses);
 		        //dont really like this but whatever....refactor later
 		        const CardHandler = createCardHandler();
+		        CardHandler.clearCards();
 		       	YelpQuery.businesses.map(function(business){
 
 		       		CardHandler.cardList.push(createCard(business));
