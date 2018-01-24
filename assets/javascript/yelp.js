@@ -3,11 +3,11 @@ function createCardHandler(){
 	const CardHandler = {
 
 		cardList : [],
-		cardContainer : $('.card-container'),
+		cardContainer : $('.yelp-card-container'),
 
 		showCards : function(){
 			const CardHandler = this;
-			CardHandler.cardList.map(function(card){CardHandler.cardContainer.append(card)});
+			CardHandler.cardList.map(function(card){CardHandler.cardContainer.append(card.element)});
 		},
 		clearCards : function(){
 			this.cardContainer.empty();
@@ -17,6 +17,7 @@ function createCardHandler(){
 
 	}
 
+	return CardHandler;
  
 }
 
@@ -25,9 +26,12 @@ function createCard(business){
 	const Card = {
 
 		name : business.name,
+		rating : business.rating,
+		price : business.price,
 		location : business.location,
+		distance : Math.ceil(business.distance),
 		imageURL : business.imageURL,
-		yelpURL : business.url,
+		yelpURL : business.yelpURL,
 		element : undefined,
 		createCardElement : function(){
 			this.element = '';
@@ -39,7 +43,10 @@ function createCard(business){
             this.element += '<h4 class="mdl-card__title-text">' + this.name + '</h4>';
             this.element += '</div>';
             this.element += '<div class="mdl-card__supporting-text">';
-            this.element += '<span class="mdl-typography--font-light mdl-typography--subhead">info about option 2</span>';
+            this.element += '<div class="mdl-typography--font-light mdl-typography--subhead"><strong>Rated:</strong> '+ this.rating + '</div>';
+            this.element += '<div class="mdl-typography--font-light mdl-typography--subhead"><strong>Price:</strong> '+ this.price + '</div>';
+            this.element += '<div class="mdl-typography--font-light mdl-typography--subhead"><strong>Distance:</strong> '+ 
+            				this.distance + ' mile(s)</div>';
             this.element += '</div>';
             this.element += '<div class="mdl-card__actions">';
             this.element += '<a class="web-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="' + this.yelpURL + '">';
@@ -48,9 +55,6 @@ function createCard(business){
             this.element += '</a>';
             this.element += '</div>';
             this.element += '</div>';
-
-
-
 		}
 
 	}
@@ -167,6 +171,15 @@ function newYelpQuery(){
 
 		        YelpQuery.parseLocationData(data);
 		        console.log(YelpQuery.businesses);
+		        //dont really like this but whatever....refactor later
+		        const CardHandler = createCardHandler();
+		       	YelpQuery.businesses.map(function(business){
+
+		       		CardHandler.cardList.push(createCard(business));
+		       		
+		       	})
+		       	CardHandler.showCards();
+
 		        $("#loadModal").modal("hide");
 		    });
 		}
@@ -176,19 +189,19 @@ function newYelpQuery(){
 }
 
 $(document).ready(function () {
-/*
+	/*
 	const YelpQuery = newYelpQuery();
 	YelpQuery.setLocationAddress("Los Angeles, California");
-	YelpQuery.setRadius(1);
+	YelpQuery.setRadius(5);
 	YelpQuery.queryBusinesses();
-
-	$(document).on("click",".load-more-btn",function(){
+	*/
+	/*$(document).on("click",".load-more-btn",function(){
 		YelpQuery.queryMore();
 	});
 
 	$(document).on("click",".load-less-btn",function(){
 		YelpQuery.queryLess();
 	});
-
 	*/
+	
 });

@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
 $(".main-artist").hide();
-
+$("#instOne").hide();
+$("#instTwo").hide();
 function queryProxy(requestUrl, apiKey) {
     $("#loadModal").modal("show");
     const proxy = 'https://still-fortress-80643.herokuapp.com/';
@@ -70,12 +71,13 @@ function queryShows(showRequestUrl, apiKey) {
             //    map: map
             //});
             //Back to the boring stuff
+            var latitude = yelpLatitude.data()
             var artistShowHeadline = $("<div class='show-headline'>");
             var artistShowLocation = $("<div class='show-location'>");
             var showDateTime = $("<div class='show-date-time'>");
             var artistTicketStatus = $("<div class='ticket-status'>");
             var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
-            artistShowHeadline.append(shows);
+            artistShowHeadline.append("<a id='dinnerPlans' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus.toUpperCase());
@@ -103,11 +105,26 @@ $("#initializeSearch").on("click", function () {
             return true;
         }
     }
+    var instructionOne = "Click on a show & see where to eat!";
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
     $(".main-artist").show();
     emptyInput();
     $("#formSearch").val("");
+    $("#instOne").empty();
+    $("#instOne").append(instructionOne);
+    $("#instOne").show();
+})
+
+
+//This is what should be clicked to display the Yelp info
+$(document).on("click", "#dinnerPlans", function () {
+    event.preventDefault();
+    var instructionTwo = "Great! Now select a place to eat.";
+    $(".main-artist").show();
+    $("#instOne").empty();
+    $("#instOne").append(instructionTwo);
+    $("#instOne").show();
 })
 
 })
