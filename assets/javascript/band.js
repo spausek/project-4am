@@ -97,10 +97,12 @@ $("#initializeSearch").on("click", function () {
     function emptyInput() {
         if ($("#formSearch").val() === "") {
             $("#loadModal").modal("hide");
+            $("#instOne").hide();
             $(".main-artist").hide();
             $("#myModal").modal();
             return false;
         }else {
+            $("#instOne").show();
             return true;
         }
     }
@@ -112,7 +114,6 @@ $("#initializeSearch").on("click", function () {
     $("#formSearch").val("");
     $("#instOne").empty();
     $("#instOne").append(instructionOne);
-    $("#instOne").show();
 })
 
 
