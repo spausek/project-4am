@@ -3,20 +3,21 @@ function createCardHandler(){
 	const CardHandler = {
 
 		cardList : [],
-		cardContainer : $('.card-container'),
+		cardContainer : $('.yelp-card-container'),
 
 		showCards : function(){
 			const CardHandler = this;
-			CardHandler.cardList.map(function(card){CardHandler.cardContainer.append(card)});
+			CardHandler.cardList.map(function(card){CardHandler.cardContainer.append(card.element)});
 		},
 		clearCards : function(){
 			this.cardContainer.empty();
-			this.cardList = [];
+			//this.cardList = [];
 		}
 
 
 	}
 
+	return CardHandler;
  
 }
 
@@ -25,9 +26,12 @@ function createCard(business){
 	const Card = {
 
 		name : business.name,
+		rating : business.rating,
+		price : business.price,
 		location : business.location,
+		distance : Math.ceil(business.distance),
 		imageURL : business.imageURL,
-		yelpURL : business.url,
+		yelpURL : business.yelpURL,
 		element : undefined,
 		createCardElement : function(){
 			this.element = '';
@@ -39,7 +43,10 @@ function createCard(business){
             this.element += '<h4 class="mdl-card__title-text">' + this.name + '</h4>';
             this.element += '</div>';
             this.element += '<div class="mdl-card__supporting-text">';
-            this.element += '<span class="mdl-typography--font-light mdl-typography--subhead">info about option 2</span>';
+            this.element += '<div class="mdl-typography--font-light mdl-typography--subhead"><strong>Rated:</strong> '+ this.rating + '</div>';
+            this.element += '<div class="mdl-typography--font-light mdl-typography--subhead"><strong>Price:</strong> '+ this.price + '</div>';
+            this.element += '<div class="mdl-typography--font-light mdl-typography--subhead"><strong>Distance:</strong> '+ 
+            				this.distance + ' mile(s)</div>';
             this.element += '</div>';
             this.element += '<div class="mdl-card__actions">';
             this.element += '<a class="web-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="' + this.yelpURL + '">';
@@ -48,9 +55,6 @@ function createCard(business){
             this.element += '</a>';
             this.element += '</div>';
             this.element += '</div>';
-
-
-
 		}
 
 	}
@@ -79,16 +83,12 @@ function createBusiness(jsonBusiness){
 	return Business;
 }
 
-//let YelpQuery = newYelpQuery();
-// YelpQuery.setLocationCoords(venue)
-//YelpQuery.setRadius(miles)
-//YelpQuery.queryBusinesses(YelpQuery)
 function newYelpQuery(){
 
 	const YelpQuery = {
 
 		endpoint : "https://api.yelp.com/v3/businesses/search?",
-		key : 'placeholder',
+		key : '4unWbK-_W7vBXhvUhRW7fAumTwLGgexZVlW1YgVVk87ns15LhHt6eektWb4pLt5S0XRadMk_O7QaoaRn_lWrWhPDTta5Miozmsn5re4I-w6AbnSc7q3aLe5RfhJkWnYx',
 		businesses : [],
 		currentOffset : 0,
 		totalResults: 0,
@@ -101,16 +101,16 @@ function newYelpQuery(){
 			term : "&categories=bars,restaurants",
 			radius : undefined,
 			offset: "&offset=0",
-			limit: "&limit=25", //25 per page/search
+			limit: "&limit=8", //25 per page/search
 		},
 		 
 		setLocationAddress : function(venue){
 
 			this.params.location = "&location=" + venue;//"&location=" + venue.address1 + "," + venue.city + "," + venue.state;
 		},
-		setLocationCoords : function(venue){
-			this.params.latitude = "&latitude=" + venue.latitude;
-			this.params.longitude = "&longitude=" + venue.longitude;
+		setLocationCoords : function(location){
+			this.params.latitude = "&latitude=" + location.latitude;
+			this.params.longitude = "&longitude=" + location.longitude;
 		},
 		setRadius : function(miles){
 			this.params.radius = "&radius=" + milesToMeters(miles);
@@ -145,7 +145,7 @@ function newYelpQuery(){
 			console.log("Querying less!" + "\n Offset: " + this.offsetNumber);
 		},
 		createQueryURL : function(){
-			let queryURL = this.endpoint + this.params.location + this.params.term + this.params.radius;
+			let queryURL = this.endpoint + this.params.latitude + this.params.longitude + this.params.term + this.params.radius;
 			queryURL += this.params.limit + this.params.offset;
 			
 			return queryURL;
@@ -167,6 +167,16 @@ function newYelpQuery(){
 
 		        YelpQuery.parseLocationData(data);
 		        console.log(YelpQuery.businesses);
+		        //dont really like this but whatever....refactor later
+		        const CardHandler = createCardHandler();
+		        CardHandler.clearCards();
+		       	YelpQuery.businesses.map(function(business){
+
+		       		CardHandler.cardList.push(createCard(business));
+		       		
+		       	})
+		       	CardHandler.showCards();
+
 		        $("#loadModal").modal("hide");
 		    });
 		}
@@ -175,20 +185,3 @@ function newYelpQuery(){
 	return YelpQuery;
 }
 
-$(document).ready(function () {
-/*
-	const YelpQuery = newYelpQuery();
-	YelpQuery.setLocationAddress("Los Angeles, California");
-	YelpQuery.setRadius(1);
-	YelpQuery.queryBusinesses();
-
-	$(document).on("click",".load-more-btn",function(){
-		YelpQuery.queryMore();
-	});
-
-	$(document).on("click",".load-less-btn",function(){
-		YelpQuery.queryLess();
-	});
-
-	*/
-});

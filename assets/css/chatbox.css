@@ -39,16 +39,31 @@ body
     margin: 11px 7px 0;
 }
 
-.popup-messages-footer > textarea {
+text:focus, input:focus{
+    color: black;
+}
+
+.popup-messages-footer > #username {
+    border: 1px solid #b2b2b2 !important;
+    height: 34px !important;
+    margin: 7px;
+    padding: 5px !important;
+    border: medium none;
+    width: 95% !important;    
+}
+
+
+
+.popup-messages-footer > #text-area {
     border-bottom: 1px solid #b2b2b2 !important;
     height: 34px !important;
     margin: 7px;
     padding: 5px !important;
     border: medium none;
     width: 95% !important;
-    
-    
+    overflow: scroll;
 }
+
 
 .popup-messages-footer {
     background: #fff none repeat scroll 0 0;

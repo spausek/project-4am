@@ -76,7 +76,7 @@ function queryShows(showRequestUrl, apiKey) {
             var showDateTime = $("<div class='show-date-time'>");
             var artistTicketStatus = $("<div class='ticket-status'>");
             var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
-            artistShowHeadline.append("<a id='dinnerPlans'>" + shows + "</a>");
+            artistShowHeadline.append("<a id='dinnerPlans' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus.toUpperCase());
@@ -97,10 +97,12 @@ $("#initializeSearch").on("click", function () {
     function emptyInput() {
         if ($("#formSearch").val() === "") {
             $("#loadModal").modal("hide");
+            $("#instOne").hide();
             $(".main-artist").hide();
             $("#myModal").modal();
             return false;
         }else {
+            $("#instOne").show();
             return true;
         }
     }
@@ -112,18 +114,24 @@ $("#initializeSearch").on("click", function () {
     $("#formSearch").val("");
     $("#instOne").empty();
     $("#instOne").append(instructionOne);
-    $("#instOne").show();
 })
 
 
 //This is what should be clicked to display the Yelp info
 $(document).on("click", "#dinnerPlans", function () {
+    
     event.preventDefault();
     var instructionTwo = "Great! Now select a place to eat.";
     $(".main-artist").show();
     $("#instOne").empty();
     $("#instOne").append(instructionTwo);
     $("#instOne").show();
+    const YelpQuery = newYelpQuery();
+    YelpQuery.setLocationCoords({
+        latitude:$(this).attr('latitude'),
+        longitude:$(this).attr('longitude')});
+    YelpQuery.setRadius(5);
+    YelpQuery.queryBusinesses();
 })
 
 })
