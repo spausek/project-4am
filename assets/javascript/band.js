@@ -71,7 +71,6 @@ function queryShows(showRequestUrl, apiKey) {
             //    map: map
             //});
             //Back to the boring stuff
-            var latitude = yelpLatitude.data()
             var artistShowHeadline = $("<div class='show-headline'>");
             var artistShowLocation = $("<div class='show-location'>");
             var showDateTime = $("<div class='show-date-time'>");
