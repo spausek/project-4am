@@ -118,12 +118,19 @@ $("#initializeSearch").on("click", function () {
 
 //This is what should be clicked to display the Yelp info
 $(document).on("click", "#dinnerPlans", function () {
+    
     event.preventDefault();
     var instructionTwo = "Great! Now select a place to eat.";
     $(".main-artist").show();
     $("#instOne").empty();
     $("#instOne").append(instructionTwo);
     $("#instOne").show();
+    const YelpQuery = newYelpQuery();
+    YelpQuery.setLocationCoords({
+        latitude:$(this).attr('latitude'),
+        longitude:$(this).attr('longitude')});
+    YelpQuery.setRadius(5);
+    YelpQuery.queryBusinesses();
 })
 
 })
