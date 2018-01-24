@@ -22,13 +22,12 @@ function queryProxy(requestUrl, apiKey) {
             var upcomingShowsCount = data.upcoming_event_count;
             var artistTourDates = data.facebook_tour_dates_url;
             var artistResult = $("<div class='artistRow'>");
-            var artistThumbImg = "<img class='artistImg' src='" + artistImage + "'>";
-            var artistShows = $("<div class='artist-shows' src='" + artistTourDates + "'>");
+            var artistThumbImg = "<img class='artistImg' src='" + artistImage + "' alt='artist' >";
             var upcomingShows = $("<div class='showCount'" + upcomingShowsCount + "'>");
             artistResult.append(artist);
-            artistShows.append(artistTourDates);
             upcomingShows.append("Upcoming shows: " + upcomingShowsCount);
-            $(".main-artist").append(artistThumbImg, artistResult, upcomingShows);
+            $(".artist-photo").append(artistThumbImg);
+            $(".artist-name").append(artistResult, upcomingShows);
         }
         $("#loadModal").modal("hide");
     })
@@ -71,16 +70,16 @@ function queryShows(showRequestUrl, apiKey) {
             //    map: map
             //});
             //Back to the boring stuff
-            var artistShowHeadline = $("<div class='show-headline'>");
-            var artistShowLocation = $("<div class='show-location'>");
-            var showDateTime = $("<div class='show-date-time'>");
-            var artistTicketStatus = $("<div class='ticket-status'>");
+            var artistShowHeadline = $("<td class='show-headline'>");
+            var artistShowLocation = $("<td class='show-location'>");
+            var showDateTime = $("<td class='show-date-time'>");
+            var artistTicketStatus = $("<td class='ticket-status'>");
             var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
             artistShowHeadline.append("<a id='dinnerPlans' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus.toUpperCase());
-            $(".main-artist").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
+            $(".rowOne").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
             $("#loadModal").modal("hide");
         }
             //Creates a center point at the first map coordinates
