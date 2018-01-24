@@ -83,10 +83,6 @@ function createBusiness(jsonBusiness){
 	return Business;
 }
 
-//let YelpQuery = newYelpQuery();
-// YelpQuery.setLocationCoords(venue)
-//YelpQuery.setRadius(miles)
-//YelpQuery.queryBusinesses(YelpQuery)
 function newYelpQuery(){
 
 	const YelpQuery = {
@@ -105,16 +101,16 @@ function newYelpQuery(){
 			term : "&categories=bars,restaurants",
 			radius : undefined,
 			offset: "&offset=0",
-			limit: "&limit=25", //25 per page/search
+			limit: "&limit=8", //25 per page/search
 		},
 		 
 		setLocationAddress : function(venue){
 
 			this.params.location = "&location=" + venue;//"&location=" + venue.address1 + "," + venue.city + "," + venue.state;
 		},
-		setLocationCoords : function(venue){
-			this.params.latitude = "&latitude=" + venue.latitude;
-			this.params.longitude = "&longitude=" + venue.longitude;
+		setLocationCoords : function(location){
+			this.params.latitude = "&latitude=" + location.latitude;
+			this.params.longitude = "&longitude=" + location.longitude;
 		},
 		setRadius : function(miles){
 			this.params.radius = "&radius=" + milesToMeters(miles);
@@ -149,7 +145,7 @@ function newYelpQuery(){
 			console.log("Querying less!" + "\n Offset: " + this.offsetNumber);
 		},
 		createQueryURL : function(){
-			let queryURL = this.endpoint + this.params.location + this.params.term + this.params.radius;
+			let queryURL = this.endpoint + this.params.latitude + this.params.longitude + this.params.term + this.params.radius;
 			queryURL += this.params.limit + this.params.offset;
 			
 			return queryURL;
@@ -188,20 +184,3 @@ function newYelpQuery(){
 	return YelpQuery;
 }
 
-$(document).ready(function () {
-	/*
-	const YelpQuery = newYelpQuery();
-	YelpQuery.setLocationAddress("Los Angeles, California");
-	YelpQuery.setRadius(5);
-	YelpQuery.queryBusinesses();
-	*/
-	/*$(document).on("click",".load-more-btn",function(){
-		YelpQuery.queryMore();
-	});
-
-	$(document).on("click",".load-less-btn",function(){
-		YelpQuery.queryLess();
-	});
-	*/
-	
-});
