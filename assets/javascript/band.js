@@ -71,12 +71,13 @@ function queryShows(showRequestUrl, apiKey) {
             //    map: map
             //});
             //Back to the boring stuff
+            var latitude = yelpLatitude.data()
             var artistShowHeadline = $("<div class='show-headline'>");
             var artistShowLocation = $("<div class='show-location'>");
             var showDateTime = $("<div class='show-date-time'>");
             var artistTicketStatus = $("<div class='ticket-status'>");
             var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
-            artistShowHeadline.append("<a id='dinnerPlans'>" + shows + "</a>");
+            artistShowHeadline.append("<a id='dinnerPlans' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append("Ticket availability: " + ticketStatus.toUpperCase());
