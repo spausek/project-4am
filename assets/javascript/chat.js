@@ -1,13 +1,13 @@
 // haig: this is what i got to open and close the chat box//
     $(function(){
       $("#addClass").click(function () {
-                $('#qnimate').addClass('popup-box-on');
-                $("#addClass").hide();
+      $('#qnimate').addClass('popup-box-on');
+      $("#addClass").hide();
                   });
                 
-                  $("#removeClass").click(function () {
-                $('#qnimate').removeClass('popup-box-on');
-                $("#addClass").show();
+      $("#removeClass").click(function () {
+      $('#qnimate').removeClass('popup-box-on');
+      $("#addClass").show();
                   });
         });
   
@@ -62,7 +62,7 @@
 
   	var msgUser = childSnapshot.val().user;
   	var msgText = childSnapshot.val().text;
-    var time = childSnapshot.var().time;
+    var time = childSnapshot.val().time;
 
   	$('#message-display').append('<p>' + msgUser + ': ' + msgText + ' ' + time + '</p>');
 
