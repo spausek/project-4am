@@ -34,7 +34,7 @@ function queryProxy(requestUrl, apiKey) {
             var artistThumbImg = "<img class='artistImg' src='" + artistImage + "' alt='artist' >";
             var upcomingShows = $("<div class='showCount'" + upcomingShowsCount + "'>");
             artistResult.append(artist);
-            upcomingShows.append("Upcoming shows: " + upcomingShowsCount);
+            upcomingShows.append("Upcoming Shows: " + upcomingShowsCount);
             $(".artist-photo").append(artistThumbImg);
             $(".artist-name").append(artistResult, upcomingShows);
         }
