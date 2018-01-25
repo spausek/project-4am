@@ -10,6 +10,9 @@ body {
 .logo-font.web-sub-slogan{
   font-size: 30px;
 }
+.jump-up>a{
+  color:brown;
+}
 .yelp-location-title{
 
     font-family: "Roboto","Helvetica","Arial",sans-serif;
