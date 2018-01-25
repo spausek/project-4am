@@ -17,7 +17,8 @@ function createCardHandler(){
 		updateVenueTitle : function(venueName){
 
 			this.selectedVenueTitle.text(venueName);
-		}
+		},
+
 
 
 
@@ -109,7 +110,24 @@ function newYelpQuery(){
 			offset: "&offset=0",
 			limit: "&limit=8", //25 per page/search
 		},
-		 
+		
+		reset : function(){
+			this.businesses = [];
+			this.currentOffset = 0;
+			this.totalResults = 0;
+			this.limitNumber = 8;
+			this.offsetNumber = 0;
+			this.params = {
+				address : undefined,
+				latitude : undefined,
+				longitude : undefined,
+				term : "&categories=bars,restaurants",
+				radius : undefined,
+				offset: "&offset=0",
+				limit: "&limit=8", //25 per page/search
+			};
+
+		},
 		setLocationAddress : function(venue){
 
 			this.params.location = "&location=" + venue;//"&location=" + venue.address1 + "," + venue.city + "," + venue.state;
@@ -137,18 +155,18 @@ function newYelpQuery(){
 			YelpQuery.totalResults = jsonData.total;
 
 			jsonData.businesses.map(function(business){
-				YelpQuery.businesses.push(createBusiness(business))
+				YelpQuery.businesses.push(createBusiness(business));
 			});
 		},
 		queryMore : function(){
 			this.setOffset(this.limitNumber + this.offsetNumber);
 			this.queryBusinesses();
-			console.log("Querying more!" + "\n Offset: " + this.offsetNumber);
+			//console.log("Querying more!" + "\n Offset: " + this.offsetNumber);
 		},
 		queryLess : function(){
 			this.setOffset(this.offsetNumber - this.limitNumber);
 			this.queryBusinesses();
-			console.log("Querying less!" + "\n Offset: " + this.offsetNumber);
+			//console.log("Querying less!" + "\n Offset: " + this.offsetNumber);
 		},
 		createQueryURL : function(){
 			let queryURL = this.endpoint + this.params.latitude + this.params.longitude + this.params.term + this.params.radius;
@@ -174,11 +192,21 @@ function newYelpQuery(){
 		        YelpQuery.parseLocationData(data);
 		        const CardHandler = createCardHandler();
 		        CardHandler.clearCards();
+
 		       	YelpQuery.businesses.map(function(business){
 		       		CardHandler.cardList.push(createCard(business));	
 		       	});
 
 		       	CardHandler.showCards();
+		       	//needs refactor
+				if(YelpQuery.totalResults > 8){
+                	$("#queryMoreButton").show();
+            	}
+
+            	if(YelpQuery.offsetNumber === 0){
+            		$("#queryLessButton").hide();
+            	}
+			
 		        $("#loadModal").modal("hide");
 
 		    });
@@ -187,4 +215,3 @@ function newYelpQuery(){
 	
 	return YelpQuery;
 }
-

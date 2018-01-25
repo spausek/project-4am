@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
+const YelpQuery = newYelpQuery();
 
 //Hides artist info and eateries until onclick event
 $(".event.list").hide();
 $("#instOne").hide();
 $(".artist-container").hide();
 $("#yelp-locations").hide();
+$("#queryLessButton").hide();
+$("#queryMoreButton").hide();
 
 //Bands in Town API, prints artist photo and number of shows to the HTML
 function queryProxy(requestUrl, apiKey) {
@@ -37,6 +40,7 @@ function queryProxy(requestUrl, apiKey) {
         }
 
         createCardHandler().clearCards();
+        YelpQuery.reset();
         $("#loadModal").modal("hide");
     })
 
@@ -90,8 +94,11 @@ function queryShows(showRequestUrl, apiKey) {
             showDateTime.append(dateTime);
             artistTicketStatus.append(ticketStatus.toUpperCase());
             $(".event-list").append(rows, artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
-            $("#loadModal").modal("hide");
+           
+           
         }
+             
+             $("#loadModal").modal("hide");
             //Creates a center point at the first map coordinates
             //var firstMap = {lat: latitudeData[0], lng: longitudeData[0]};
             //map.setCenter(firstMap);
@@ -127,6 +134,7 @@ $("#initializeSearch").on("click", function () {
     $("#formSearch").val("");
     $("#instOne").empty();
     $("#instOne").append(instructionOne);
+    $("#yelp-locations").hide();
 })
 
 
@@ -140,7 +148,7 @@ $(document).on("click", "#dinnerPlans", function () {
     $("#instOne").empty();
     $("#instOne").append(instructionTwo);
     $("#instOne").show();
-    const YelpQuery = newYelpQuery();
+    //const YelpQuery = newYelpQuery();
     const venueName = $(this).attr('venue-name');
     createCardHandler().updateVenueTitle($(this).attr('venue-name'));
     YelpQuery.setLocationCoords({
@@ -148,6 +156,29 @@ $(document).on("click", "#dinnerPlans", function () {
         longitude:$(this).attr('longitude')});
     YelpQuery.setRadius(5);
     YelpQuery.queryBusinesses();
+
+    
 })
+
+$(document).on("click","#queryMoreButton", function(){
+
+    YelpQuery.queryMore();
+    if(YelpQuery.offsetNumber > 0){
+        $("#queryLessButton").show();
+    }
+
+});
+
+
+$(document).on("click","#queryLessButton", function(){
+
+    if(YelpQuery.offsetNumber > 0){
+        
+        YelpQuery.queryLess();
+    }
+    
+    
+
+});
 
 })
