@@ -166,18 +166,15 @@ function newYelpQuery(){
 		    .done(function(data) {
 
 		        YelpQuery.parseLocationData(data);
-		        console.log(YelpQuery.businesses);
-		        //dont really like this but whatever....refactor later
 		        const CardHandler = createCardHandler();
 		        CardHandler.clearCards();
 		       	YelpQuery.businesses.map(function(business){
-
-		       		CardHandler.cardList.push(createCard(business));
-		       		
-		       	})
+		       		CardHandler.cardList.push(createCard(business));	
+		       	});
+		       	
 		       	CardHandler.showCards();
-
 		        $("#loadModal").modal("hide");
+
 		    });
 		}
 	}
