@@ -114,7 +114,7 @@ $("#initializeSearch").on("click", function () {
             return true;
         }
     }
-    var instructionOne = "Click on a show & see where to eat!";
+    var instructionOne = "Click on a show, see where to eat!";
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
     $(".artist-container").show();
@@ -130,7 +130,7 @@ $("#initializeSearch").on("click", function () {
 $(document).on("click", "#dinnerPlans", function () {
     
     event.preventDefault();
-    var instructionTwo = "Great! Now select a place to eat.";
+    var instructionTwo = "Great! Now see where you can eat.";
     $("#yelp-locations").show();
     $(".event-list").show();
     $("#instOne").empty();
