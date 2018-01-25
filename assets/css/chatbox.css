@@ -193,7 +193,7 @@ text:focus, input:focus{
 #message-display {
     color: black;
     overflow: auto;
-    height: 200px;
+    height: 260px;
 }
 
 #text {
