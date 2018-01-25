@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
 //Hides artist info and eateries until onclick event
 $(".event.list").hide();
 $("#instOne").hide();
@@ -34,6 +35,8 @@ function queryProxy(requestUrl, apiKey) {
             $(".artist-photo").append(artistThumbImg);
             $(".artist-name").append(artistResult, upcomingShows);
         }
+
+        createCardHandler().clearCards();
         $("#loadModal").modal("hide");
     })
 
@@ -58,6 +61,7 @@ function queryShows(showRequestUrl, apiKey) {
         for (var i = 0; i < data.length; i++) {
             var shows = data[i].title;
             var showLocation = data[i].formatted_location;
+            var venueName = data[i].venue.name;
             var dateTime = data[i].formatted_datetime;
             var ticketStatus = data[i].ticket_status;
             var ticketUrl = data[i].ticket_url;
@@ -81,7 +85,7 @@ function queryShows(showRequestUrl, apiKey) {
             var artistTicketStatus = $("<td class='ticket-status'>");
             var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
             rows.prepend(artistShowHeadline);
-            artistShowHeadline.append("<a id='dinnerPlans' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
+            artistShowHeadline.append("<a id='dinnerPlans' venue-name='" + venueName + "' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
             artistTicketStatus.append(ticketStatus.toUpperCase());
@@ -137,6 +141,8 @@ $(document).on("click", "#dinnerPlans", function () {
     $("#instOne").append(instructionTwo);
     $("#instOne").show();
     const YelpQuery = newYelpQuery();
+    const venueName = $(this).attr('venue-name');
+    createCardHandler().updateVenueTitle($(this).attr('venue-name'));
     YelpQuery.setLocationCoords({
         latitude:$(this).attr('latitude'),
         longitude:$(this).attr('longitude')});

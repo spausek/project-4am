@@ -4,7 +4,7 @@ function createCardHandler(){
 
 		cardList : [],
 		cardContainer : $('.yelp-card-container'),
-
+		selectedVenueTitle : $('.yelp-location-title'),
 		showCards : function(){
 			const CardHandler = this;
 			CardHandler.cardList.map(function(card){CardHandler.cardContainer.append(card.element)});
@@ -12,7 +12,13 @@ function createCardHandler(){
 		clearCards : function(){
 			this.cardContainer.empty();
 			//this.cardList = [];
+		},
+
+		updateVenueTitle : function(venueName){
+
+			this.selectedVenueTitle.text(venueName);
 		}
+
 
 
 	}
@@ -92,7 +98,7 @@ function newYelpQuery(){
 		businesses : [],
 		currentOffset : 0,
 		totalResults: 0,
-		limitNumber : 25,
+		limitNumber : 8,
 		offsetNumber : 0,
 		params : {
 			address : undefined,
@@ -166,18 +172,15 @@ function newYelpQuery(){
 		    .done(function(data) {
 
 		        YelpQuery.parseLocationData(data);
-		        console.log(YelpQuery.businesses);
-		        //dont really like this but whatever....refactor later
 		        const CardHandler = createCardHandler();
 		        CardHandler.clearCards();
 		       	YelpQuery.businesses.map(function(business){
+		       		CardHandler.cardList.push(createCard(business));	
+		       	});
 
-		       		CardHandler.cardList.push(createCard(business));
-		       		
-		       	})
 		       	CardHandler.showCards();
-
 		        $("#loadModal").modal("hide");
+
 		    });
 		}
 	}
