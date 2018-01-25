@@ -56,7 +56,7 @@ function createCard(business){
             				this.distance + ' mile(s)</div>';
             this.element += '</div>';
             this.element += '<div class="mdl-card__actions">';
-            this.element += '<a class="web-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="' + this.yelpURL + '">';
+            this.element += '<a class="web-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="' + this.yelpURL + '" target="_blank">';
             this.element += 'Let\'s Eat!';
             this.element += '<i class="material-icons">chevron_right</i>';
             this.element += '</a>';
