@@ -1,13 +1,19 @@
 $(document).ready(function () {
 
-$(".main-artist").hide();
+//Hides artist info and eateries until onclick event
+$(".event.list").hide();
 $("#instOne").hide();
-$("#instTwo").hide();
+$(".artist-container").hide();
+$("#yelp-locations").hide();
+
+//Bands in Town API, prints artist photo and number of shows to the HTML
 function queryProxy(requestUrl, apiKey) {
     $("#loadModal").modal("show");
     const proxy = 'https://still-fortress-80643.herokuapp.com/';
     let response = undefined;
     var requestUrl = 'http://api.bandsintown.com/artists/' + artistSearchTerm + '.json?api_version=2.0&app_id=project-4am';
+
+//Ajax call
     $.ajax({
         method: 'GET',
         url: proxy + requestUrl,
@@ -20,7 +26,6 @@ function queryProxy(requestUrl, apiKey) {
             var artist = data.name;
             var artistImage = data.thumb_url;
             var upcomingShowsCount = data.upcoming_event_count;
-            var artistTourDates = data.facebook_tour_dates_url;
             var artistResult = $("<div class='artistRow'>");
             var artistThumbImg = "<img class='artistImg' src='" + artistImage + "' alt='artist' >";
             var upcomingShows = $("<div class='showCount'" + upcomingShowsCount + "'>");
@@ -36,7 +41,7 @@ function queryProxy(requestUrl, apiKey) {
 }
 
 
-
+//Ajax that prints the shows, location, date/time, availability of tix, link to purchase tix
 function queryShows(showRequestUrl, apiKey) {
     $("#loadModal").modal("show");
     const proxy = 'https://still-fortress-80643.herokuapp.com/';
@@ -54,7 +59,6 @@ function queryShows(showRequestUrl, apiKey) {
             var shows = data[i].title;
             var showLocation = data[i].formatted_location;
             var dateTime = data[i].formatted_datetime;
-            var saleDateTime = data[i].on_sale_datetime;
             var ticketStatus = data[i].ticket_status;
             var ticketUrl = data[i].ticket_url;
             //These are the coordinates you want to precisely locate where the event is. If you dont need these and would prefer
@@ -70,16 +74,18 @@ function queryShows(showRequestUrl, apiKey) {
             //    map: map
             //});
             //Back to the boring stuff
+            var rows = $("<tr class='rowOne'>");
             var artistShowHeadline = $("<td class='show-headline'>");
             var artistShowLocation = $("<td class='show-location'>");
             var showDateTime = $("<td class='show-date-time'>");
             var artistTicketStatus = $("<td class='ticket-status'>");
             var buyTickets = $("<a class='buy-tickets' href=" + ticketUrl + " target='_blank'> Buy Tickets </a>");
+            rows.prepend(artistShowHeadline);
             artistShowHeadline.append("<a id='dinnerPlans' longitude='" + yelpLongitude + "' latitude='" + yelpLatitude + "'>" + shows + "</a>");
             artistShowLocation.append(showLocation);
             showDateTime.append(dateTime);
-            artistTicketStatus.append("Ticket availability: " + ticketStatus.toUpperCase());
-            $(".rowOne").append(artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
+            artistTicketStatus.append(ticketStatus.toUpperCase());
+            $(".event-list").append(rows, artistShowHeadline, artistShowLocation, showDateTime, artistTicketStatus, buyTickets);
             $("#loadModal").modal("hide");
         }
             //Creates a center point at the first map coordinates
@@ -88,16 +94,19 @@ function queryShows(showRequestUrl, apiKey) {
     })
 }
 
+//Onclick to search for artist, display the results
 $("#initializeSearch").on("click", function () {
     event.preventDefault();
     var artistTerm = $("#formSearch").val().trim();
     artistSearchTerm = artistTerm.split(" ").join("%20");
-    $(".main-artist").empty();
+    $(".event-list").empty();
+    $(".artist-photo").empty();
+    $(".artist-name").empty();
     function emptyInput() {
         if ($("#formSearch").val() === "") {
             $("#loadModal").modal("hide");
             $("#instOne").hide();
-            $(".main-artist").hide();
+            $(".event-list").hide();
             $("#myModal").modal();
             return false;
         }else {
@@ -108,7 +117,8 @@ $("#initializeSearch").on("click", function () {
     var instructionOne = "Click on a show & see where to eat!";
     queryProxy(artistSearchTerm);
     queryShows(artistSearchTerm);
-    $(".main-artist").show();
+    $(".artist-container").show();
+    $(".event-list").show();
     emptyInput();
     $("#formSearch").val("");
     $("#instOne").empty();
@@ -116,12 +126,13 @@ $("#initializeSearch").on("click", function () {
 })
 
 
-//This is what should be clicked to display the Yelp info
+//Onclick to display Yelp info
 $(document).on("click", "#dinnerPlans", function () {
     
     event.preventDefault();
     var instructionTwo = "Great! Now select a place to eat.";
-    $(".main-artist").show();
+    $("#yelp-locations").show();
+    $(".event-list").show();
     $("#instOne").empty();
     $("#instOne").append(instructionTwo);
     $("#instOne").show();
