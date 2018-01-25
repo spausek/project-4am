@@ -50,7 +50,9 @@ function queryProxy(requestUrl, apiKey) {
 
 //Ajax that prints the shows, location, date/time, availability of tix, link to purchase tix
 function queryShows(showRequestUrl, apiKey) {
+
     $("#loadModal").modal("show");
+    $("#event-table").hide();
     const proxy = 'https://still-fortress-80643.herokuapp.com/';
     let response = undefined;
     var showRequestUrl = "http://api.bandsintown.com/artists/" + artistSearchTerm + "/events.json?api_version=2.0&app_id=project-4am";
@@ -105,36 +107,51 @@ function queryShows(showRequestUrl, apiKey) {
     })
 }
 
-//Onclick to search for artist, display the results
-$("#initializeSearch").on("click", function () {
+//originally inside of the onclick. 
+//I added it to a function so that we could reuuse it for the enter key submission
+function initializeSearch(){
+    
     event.preventDefault();
     var artistTerm = $("#formSearch").val().trim();
     artistSearchTerm = artistTerm.split(" ").join("%20");
     $(".event-list").empty();
     $(".artist-photo").empty();
     $(".artist-name").empty();
-    function emptyInput() {
-        if ($("#formSearch").val() === "") {
+    createCardHandler().clearCards();
+    
+        if ($("#formSearch").val() === "" || $("#formSearch").val() === null) {
             $("#loadModal").modal("hide");
             $("#instOne").hide();
             $(".event-list").hide();
             $("#myModal").modal();
-            return false;
+            $("#event-table").hide();
+            $("#yelp-locations").hide();
+            
         }else {
             $("#instOne").show();
-            return true;
+            $("#event-table").show();
+            var instructionOne = "Click on a show, see where to eat!";
+            queryProxy(artistSearchTerm);
+            queryShows(artistSearchTerm);
+            $(".artist-container").show();
+            $(".event-list").show();
+            $("#event-table").show();
+            $("#formSearch").val("");
+            $("#instOne").empty();
+            $("#instOne").append(instructionOne);
+            $("#yelp-locations").hide();
         }
-    }
-    var instructionOne = "Click on a show, see where to eat!";
-    queryProxy(artistSearchTerm);
-    queryShows(artistSearchTerm);
-    $(".artist-container").show();
-    $(".event-list").show();
-    emptyInput();
-    $("#formSearch").val("");
-    $("#instOne").empty();
-    $("#instOne").append(instructionOne);
-    $("#yelp-locations").hide();
+    
+    
+
+};
+
+
+
+
+//Onclick to search for artist, display the results
+$("#initializeSearch").on("click", function () {
+    initializeSearch();
 })
 
 
@@ -155,11 +172,17 @@ $(document).on("click", "#dinnerPlans", function () {
         latitude:$(this).attr('latitude'),
         longitude:$(this).attr('longitude')});
     YelpQuery.setRadius(5);
+    YelpQuery.setOffset(0);
     YelpQuery.queryBusinesses();
 
     
 })
 
+$(document).keypress(function(event) {
+    if(event.which === 13) {
+        initializeSearch();
+    }
+});
 $(document).on("click","#queryMoreButton", function(){
 
     YelpQuery.queryMore();
@@ -173,7 +196,7 @@ $(document).on("click","#queryMoreButton", function(){
 $(document).on("click","#queryLessButton", function(){
 
     if(YelpQuery.offsetNumber > 0){
-        
+
         YelpQuery.queryLess();
     }
     
