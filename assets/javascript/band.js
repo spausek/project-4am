@@ -3,6 +3,8 @@ $(document).ready(function () {
 const YelpQuery = newYelpQuery();
 
 //Hides artist info and eateries until onclick event
+$("#artist-info").hide();
+$("#white-nav").hide();
 $(".event.list").hide();
 $("#instOne").hide();
 $(".artist-container").hide();
@@ -128,6 +130,8 @@ function initializeSearch(){
             $("#yelp-locations").hide();
             
         }else {
+            $("#artist-info").show();
+            $("#white-nav").show();
             $("#instOne").show();
             $("#event-table").show();
             var instructionOne = "Click on a show, see where to eat!";
@@ -164,6 +168,9 @@ $(document).keypress(function(event) {
 $(document).on("click", "#dinnerPlans", function () {
     
     event.preventDefault();
+    $("#white-nav").show();
+    $("#artist-info").show();
+    
     var instructionTwo = "Great! Now see where you can eat.";
     $("#yelp-locations").show();
     $(".event-list").show();

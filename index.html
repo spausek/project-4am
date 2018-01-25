@@ -26,19 +26,17 @@
   <body>
 
       <!-- main classes -->
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <!-- nav -->
+      <div  class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-      <div class="web-header mdl-layout__header mdl-layout__header--waterfall">
+      <div id="white-nav" class="web-header mdl-layout__header mdl-layout__header--waterfall">
 
       <div class="mdl-layout__header-row">
 
-      <!-- write the instruction of the steps here -->
+      <!-- nav  instructions-->
       <div id="instOne" class="mdl-typography--display-1-color-contrast text-center mdl-cell--12-col"></div>
 
-      <div class="web-navigation-container">
-             
-      
-      </div>
+      <div class="web-navigation-container"></div>
 
       </div>
       </div>
@@ -49,7 +47,6 @@
 
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"></button>
 
-          <!--THIS IS WHERE I CHANGED THE ID OF THE MODAL TO myModal, IT RUNS USING THAT ID-->
           <div class="modal fade" id="myModal">
           <div class="modal-dialog">
           <div class="modal-content">
@@ -67,9 +64,9 @@
           </div>
         </div>
 
-
         </div>
         <!-- modal button ends -->
+
 
         <!--loading modal-->
         <div class="modal fade" id="loadModal">
@@ -78,6 +75,8 @@
           </div>
         </div>
         <!--loading modal-->
+
+        <!-- nav ends here -->
 
 
         <!--main content-->
@@ -189,34 +188,12 @@
           <!-- Yelp Restaurant Cards go here -->
         </div>
 
-        
       </div>
-
-<!-- scroll -->
-      <!-- <a href="">Click Me to Smooth Scroll to Section 2 Below</a>
-
-<div class="main">
-  <section></section>
-</div>
-
-<div class="main" id="section2">
-  <section style="background-color:blue"></section>
-</div> -->
-<!-- scroll -->
 
         <!-- footer & chat box -->
         <footer class="web-footer mdl-mega-footer">
-         
-            
-            <div class="mdl-mega-footer--right-section jump-up">
-              <a class="mdl-typography--font-light" href="#top">
-                Back to Top
-                <i class="material-icons">expand_less</i>
-              </a>
-            </div>
-          
 
-          <div class="mdl-mega-footer--middle-section text-center">
+          <div class="mdl-mega-footer--middle-section text-rigth">
           	<div class=" jump-up">
               <a class="mdl-typography--font-light" href="#top">
                 Back to Top
@@ -251,7 +228,7 @@
 
 
           <div class="popup-messages"> 
-          `<div class="direct-chat-messages">
+          <div class="direct-chat-messages">
             
           <!-- Message. Default to the left -->
           <div class="direct-chat-msg doted-border">
@@ -269,8 +246,12 @@
           <div class="popup-messages-footer">
             <form>
             <input id="username" type="text" class="form-control"  placeholder="Enter Username">
-            <input id="text" class="form-control"  type="text"> 
-             <button class="mdl-mega-footer--social-btn" id="post"><span class="glyphicon glyphicon-send"></span></button>
+            <input id="text" class="form-control"  type="text" placeholder="Type here...">
+
+            <button class="mdl-mega-footer--social-btn btn btn-sm" id="post" type="button">
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
+            
             </form>
             </div>
           </div>

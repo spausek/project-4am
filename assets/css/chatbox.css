@@ -195,3 +195,16 @@ text:focus, input:focus{
     overflow: auto;
     height: 200px;
 }
+
+#text {
+    float: left;
+    width: 85%;
+    margin-right: 1.5%;
+
+}
+
+#post {
+    float: left;
+    margin: auto;
+    
+}
