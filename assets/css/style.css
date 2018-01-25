@@ -7,6 +7,14 @@ body {
   }
 
 
+.yelp-location-title{
+
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+}
+
 .loader {
     border: 16px solid #f3f3f3;
     border-top: 16px solid #785548; 
