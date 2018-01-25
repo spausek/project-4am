@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    const CardHandler = createCardHandler();
+
 //Hides artist info and eateries until onclick event
 $(".event.list").hide();
 $("#instOne").hide();
@@ -34,6 +36,8 @@ function queryProxy(requestUrl, apiKey) {
             $(".artist-photo").append(artistThumbImg);
             $(".artist-name").append(artistResult, upcomingShows);
         }
+        
+        CardHandler.clearCards();
         $("#loadModal").modal("hide");
     })
 
