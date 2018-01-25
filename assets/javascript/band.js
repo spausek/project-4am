@@ -110,7 +110,7 @@ function queryShows(showRequestUrl, apiKey) {
 //originally inside of the onclick. 
 //I added it to a function so that we could reuuse it for the enter key submission
 function initializeSearch(){
-    
+
     event.preventDefault();
     var artistTerm = $("#formSearch").val().trim();
     artistSearchTerm = artistTerm.split(" ").join("%20");
@@ -153,7 +153,12 @@ function initializeSearch(){
 $("#initializeSearch").on("click", function () {
     initializeSearch();
 })
-
+//When they press enter, also run initializeSearch
+$(document).keypress(function(event) {
+    if(event.which === 13) {
+        initializeSearch();
+    }
+});
 
 //Onclick to display Yelp info
 $(document).on("click", "#dinnerPlans", function () {
@@ -178,11 +183,7 @@ $(document).on("click", "#dinnerPlans", function () {
     
 })
 
-$(document).keypress(function(event) {
-    if(event.which === 13) {
-        initializeSearch();
-    }
-});
+
 $(document).on("click","#queryMoreButton", function(){
 
     YelpQuery.queryMore();
