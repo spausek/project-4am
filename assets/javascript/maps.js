@@ -1,5 +1,5 @@
 //Global variables for map and marker generation
-
+/*
 var latitudeData = [];
 console.log(latitudeData);
 var longitudeData = [];
@@ -14,3 +14,4 @@ function initMap(){
                 });
 
                 }
+*/

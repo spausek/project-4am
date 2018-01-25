@@ -31,8 +31,8 @@
   	var msgText = $('#text').val().trim();
     // time stamp
     var time = moment().format('LT');  
-  	console.log(msgUser);
-  	console.log(msgText);
+  	//console.log(msgUser);
+  	//console.log(msgText);
 
   	if (msgText ==='' || msgUser === ''){
       
@@ -49,7 +49,7 @@
 
   	//push object to firebase
   	database.ref().push(messagesData);
-  	console.log(messagesData);
+  	//console.log(messagesData);
 
    // Clears Message input box
 
@@ -58,7 +58,7 @@
   });
 
   database.ref().on('child_added', function(childSnapshot, prevChildKey){
-  	console.log(childSnapshot.val());
+  	//console.log(childSnapshot.val());
 
   	var msgUser = childSnapshot.val().user;
   	var msgText = childSnapshot.val().text;
