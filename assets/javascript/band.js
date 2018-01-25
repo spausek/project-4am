@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    const CardHandler = createCardHandler();
 
 //Hides artist info and eateries until onclick event
 $(".event.list").hide();
@@ -36,8 +35,8 @@ function queryProxy(requestUrl, apiKey) {
             $(".artist-photo").append(artistThumbImg);
             $(".artist-name").append(artistResult, upcomingShows);
         }
-        
-        CardHandler.clearCards();
+
+        createCardHandler().clearCards();
         $("#loadModal").modal("hide");
     })
 
